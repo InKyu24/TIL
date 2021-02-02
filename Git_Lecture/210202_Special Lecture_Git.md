@@ -169,19 +169,6 @@ $ git checkout - // 방금 사용하던 브랜치로 이동
 
 서로 다른 commit 사이에서 동일한 파일을 수정한 경우, 병합 시 충돌이 발생할 수 있다. 이 경우는 오류가 발생한 것이 아니라 불가피한 충돌으로 반드시 직접 수정으로 해소해야 한다.
 
-##### Branch & PR 의 장점
-
-+ Asynchronous한 협업이 가능함
-
-  + 오픈 소스 협업에 주로 쓰이며, master가 요청한 PR을 검토하여 수락하는 방식이다.
-
-  
-
-##### Branch & PR의 단점
-
-+ 
-+ master가 일일이 확인하기 귀찮다.
-
 
 
 ## QnA
@@ -203,7 +190,7 @@ $ git checkout - // 방금 사용하던 브랜치로 이동
 
 + [Programmers](Programmers.co.kr)에서 1~2 level 도전
 + [SWEA](swexpertacademy.com)에서 Samsung IM level 도전, 나아가 A level(중급)까지
-+ Kakao 문제 1~2번 도전, 나아가 3~4번(중급)까지
++ Kakao 문제 1, 2번 도전, 나아가 3, 4번(중급)까지
 
 
 
