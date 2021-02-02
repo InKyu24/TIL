@@ -6,7 +6,7 @@ git bash를 통해 TIL 폴더로 진입하고, cd 명령어와 init 명령어를
 
 
 
-<img src="C:\Users\48434\AppData\Roaming\Typora\typora-user-images\image-20210202182145107.png" alt="image-20210202182145107" style="zoom: 50%;" />
+![](https://lh3.googleusercontent.com/-7FJs726iuwI/YBljC4S2PtI/AAAAAAAAGTQ/z_hx-achJDklVpvq1u2sRAXrEL1nT4B3wCLcBGAsYHQ/w400-h260/image.png)
 
 
 
@@ -14,7 +14,9 @@ git bash를 통해 TIL 폴더로 진입하고, cd 명령어와 init 명령어를
 
 >  나는 이 과정을 정형외과에서 X-ray를 촬영하는 상황으로 이해하였다.
 
-![image-20210202190939189](C:\Users\48434\AppData\Roaming\Typora\typora-user-images\image-20210202190939189.png)
+
+
+![](https://lh3.googleusercontent.com/-ox5zYpbULTE/YBljE8dUhJI/AAAAAAAAGTU/1_HIhx3CV5EUS5bZrzPBPdSQkMiib_DGQCLcBGAsYHQ/w640-h186/image.png)
 
 
 
