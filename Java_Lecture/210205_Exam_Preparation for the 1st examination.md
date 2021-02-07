@@ -10,7 +10,7 @@
    System.out.println("총합은 "+total);
    ```
 
-    	1) `0` 	2) `5` 	3) `30`	4) `55`
+   ​	1) `0` 	2) `5` 	3) `30`	4) `55`
 
    
 
@@ -145,12 +145,18 @@
     ```java
     public class Test{   
         public String getDetails(){  
-            return "String";}        
-        public void getDetails(char  c){}       
-        public void getDetails(){}			// 1)     
-        void getDetails(String  s){}		// 2)      
-        public void getDetails(int  i){}	// 3)   
-        void getDetails(double  d){}		// 4)        
+            return "String"
+        }        
+        public void getDetails(char  c){
+        }       
+        public void getDetails(){			// 1) 
+        }							    
+        void getDetails(String  s){			// 2)  
+        }							    
+        public void getDetails(int  i){		// 3) 
+        } 
+        void getDetails(double  d){			// 4) 
+        }							       
     }
     ```
 
@@ -182,7 +188,7 @@
 
     ​                 
 
-12. 제네릭을 설명한 내용 중 틀린 것은?
+12. **제네릭을 설명한 내용 중 틀린 것은?**
 
     ​	1) 제네릭 타입은  타입 매개변수를 가지는 클래스와 인터페이스를 의미한다
 
@@ -194,7 +200,7 @@
 
     
 
-13. 다음 설명 중 틀린 것은?
+13. **다음 설명 중 틀린 것은?**
 
     ​	1) 자바  애플리케이션은 최소한 하나의 쓰레드를 가진다.
 
@@ -206,7 +212,7 @@
 
     ​	
 
-14. 다음은 Company 클래스를 Singleton으로 만드는 간단한 예이다. 밑줄에 들어갈 단어를 순서대로 나열한것을 고르시오.              
+14. **다음은 Company 클래스를 Singleton으로 만드는 간단한 예이다. 밑줄에 들어갈 단어를 순서대로 나열한것을 고르시오.**              
 
     ```java
     public class Company{
@@ -241,7 +247,7 @@
 
 
 
-16. 다음  아래의 코드를 보고 틀리게 설명한 것을 고르시오.  
+16. **다음  아래의 코드를 보고 틀리게 설명한 것을 고르시오.**  
 
     ```java
     public class MyStack {     
@@ -297,7 +303,7 @@
 
 
 
-18. 다음  코드를 람다식으로 바꾼 것으로 옳은 것은?    
+18. **다음  코드를 람다식으로 바꾼 것으로 옳은 것은?**    
 
     ```java
     new Thread(new Runnable() {
@@ -308,27 +314,25 @@
     }).start();
     ```
 
-         ```java
-    1)  new Thread(->{
+    ```java
+    1) new Thread(->{
           System.out.println(""Welcome Heejin blog"");
     	}).start();
     
-    2)	new Thread(()->{
+    2) new Thread(()->{
           System.out.println(""Welcome Heejin blog"");
     	}).start();
     
-    3)  new (()->{
+    3) new (()->{
           System.out.println(""Welcome Heejin blog"");
     	}).start();
     
-    4)	new Runnable(()->{
+    4) new Runnable(()->{
           System.out.println(""Welcome Heejin blog"");
     	}).start();
-         ```
+    ```
 
-    
-
-19. 다음  코드에서 (1)에 들어갈 옳은 구문은?    
+19. **다음  코드에서 (1)에 들어갈 옳은 구문은?**    
 
     ```java
     import java.util.*;
@@ -358,8 +362,7 @@
     }    
     
     class AnimalList<T> { 
-        ArrayList<T> al = new  
-            ArrayList<T>();  
+        ArrayList<T> al = new ArrayList<T>();  
         public static void  cryingAnimalList(AnimalList< /*(1)*/  > al) { 
             LandAnimal la =  al.get(0);  
             la.crying();    
@@ -376,18 +379,19 @@
         int size() { return al.size(); 
                    }
     }
+    
     ```
-
-     ```java
+    
+    ```java
     1) ? super LandAnimal
     2) ? implements LandAnimal
     3) ? super T
     4) ? extends LandAnimal
-     ```
-
+    ```
+    
     
 
-20. 다음  코드를 컴파일 한 후의 타입 변환이 가장 올바른 것은?  
+20. **다음  코드를 컴파일 한 후의 타입 변환이 가장 올바른 것은?**  
 
     ```java
     public static void main(String... args) { 
@@ -448,7 +452,7 @@
 
     
 
-23. 다음  코드를 보고 밑줄에 알맞는 코드를 고르시오. 
+23. **다음  코드를 보고 밑줄에 알맞는 코드를 고르시오.** 
 
     ```java
     //...       
@@ -464,7 +468,7 @@
 
     ```java
     1) new  OutputStream() 
-    2)  new Stream(s1); 
+    2) new Stream(s1); 
     3) s1.getOutputStream() 
     4) s1.getStream() 
     ```
