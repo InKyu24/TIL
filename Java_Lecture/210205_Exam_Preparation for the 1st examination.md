@@ -231,7 +231,7 @@
 
     ​	3) final,  static, public 
 
-    ​	4) static,  static private 
+    ​	4) static,  static, private 
 
     ​	
 
@@ -278,7 +278,7 @@
     public class Test{  
         public static void  main(String [] args){   
             int out = 10;              
-            class Inner{              
+      		class Inner{              
                 public int  count(){        
                     int  cnt = 0;          
                     for (  int i = 0 ; i < out ; i++){ 
@@ -316,21 +316,23 @@
 
     ```java
     1) new Thread(->{
-          System.out.println(""Welcome Heejin blog"");
+          System.out.println("Welcome Heejin blog");
     	}).start();
     
     2) new Thread(()->{
-          System.out.println(""Welcome Heejin blog"");
+          System.out.println("Welcome Heejin blog");
     	}).start();
     
     3) new (()->{
-          System.out.println(""Welcome Heejin blog"");
+          System.out.println("Welcome Heejin blog");
     	}).start();
     
     4) new Runnable(()->{
-          System.out.println(""Welcome Heejin blog"");
+          System.out.println("Welcome Heejin blog");
     	}).start();
     ```
+
+    
 
 19. **다음  코드에서 (1)에 들어갈 옳은 구문은?**    
 
@@ -381,14 +383,14 @@
     }
     
     ```
-    
+
     ```java
     1) ? super LandAnimal
     2) ? implements LandAnimal
     3) ? super T
     4) ? extends LandAnimal
     ```
-    
+
     
 
 20. **다음  코드를 컴파일 한 후의 타입 변환이 가장 올바른 것은?**  
@@ -405,30 +407,30 @@
      ```java
     1)	public static void main(String... var0) {
       		ArrayList var1 = new ArrayList();
-     	 	var1.add(""Hi"");
+     	 	var1.add("Hi");
      		Long[] var2 = new Long[10];
       		var2[0] = Long.valueOf(1L);
     	}
     
     2)	public static void main(String... var0) {
-    	 List var1 = new ArrayList();
-     	 var1.add(""Hi"");
-     	 Long[] var2 = new Long[10];
-     	 var2[0] = Long.valueOf(1L);
+    	 	List var1 = new ArrayList();
+     	 	var1.add("Hi");
+     	 	Long[] var2 = new Long[10];
+     	 	var2[0] = Long.valueOf(1L);
     	}
     
     3)	public static void main(String... var0) {
       		ArrayList var1 = new ArrayList();
-      		var1.add(""Hi"");
+      		var1.add("Hi");
     		Object[] var2 = new Long[10];
      		var2[0] = Long.valueOf(1L);
     	}
     
     4)	public static void main(String... var0) {
-    	  List var1 = new ArrayList();
-    	  var1.add(""Hi"");
-          Object[] var2 = new Long[10];
-          var2[0] = Long.valueOf(1L);
+    	  	List var1 = new ArrayList();
+    	 	 var1.add("Hi");
+         	 Object[] var2 = new Long[10];
+         	 var2[0] = Long.valueOf(1L);
     	}
      ```
 
