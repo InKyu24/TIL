@@ -19,12 +19,6 @@ Today I Learned
 
 
 
-+ Github 꾸미기
-
-  > Google 내 Github 꾸미기 검색 후 활용
-
-  
-
 + Git Pages로 개인 페이지 만들기
 
   > Google 내 Github Pages 검색 후 활용
