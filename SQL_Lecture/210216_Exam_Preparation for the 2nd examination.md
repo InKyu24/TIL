@@ -6,7 +6,7 @@
 
 2. 다음과 같은  테이블이 있을 때 데이터를 추가하기 위한 표준 SQL 문장으로 옳은 것은?
 
-   ![image-20210216183125727](C:\Users\48434\AppData\Roaming\Typora\typora-user-images\image-20210216183125727.png)
+   [![img](https://lh3.googleusercontent.com/-P0AAUWUjrJE/YCuXFSqAJkI/AAAAAAAAGW8/RnJd1X358s0aLS8aohnIj49oqH_ZnpkVACLcBGAsYHQ/image-20210216183125727.png)](https://lh3.googleusercontent.com/-P0AAUWUjrJE/YCuXFSqAJkI/AAAAAAAAGW8/RnJd1X358s0aLS8aohnIj49oqH_ZnpkVACLcBGAsYHQ/image-20210216183125727.png)
 
    1)	insert into stock values ("sun",  10.5); 
 
@@ -20,7 +20,7 @@
 
 3. 다음과 같은 테이블을 만들기 위한 표준 SQL문장으로 옳은 것은?
 
-![image-20210216183125727](C:\Users\48434\AppData\Roaming\Typora\typora-user-images\image-20210216183125727.png)
+   [![img](https://lh3.googleusercontent.com/-P0AAUWUjrJE/YCuXFSqAJkI/AAAAAAAAGW8/RnJd1X358s0aLS8aohnIj49oqH_ZnpkVACLcBGAsYHQ/image-20210216183125727.png)](https://lh3.googleusercontent.com/-P0AAUWUjrJE/YCuXFSqAJkI/AAAAAAAAGW8/RnJd1X358s0aLS8aohnIj49oqH_ZnpkVACLcBGAsYHQ/image-20210216183125727.png)
 
 ​		1)	CREATE  TABLE stock ( symbol char(20) not null, price float(10,2) default 0.00 );
 
@@ -34,7 +34,7 @@
 
 4. 다음과 같은 테이블에서 price 필드의 값이 10인 모든 행에 대해  price필드의 값을 20으로 변경하기 위한 표준 SQL 중 적절한 것은?
 
-   ![image-20210216183125727](C:\Users\48434\AppData\Roaming\Typora\typora-user-images\image-20210216183125727.png)
+   [![img](https://lh3.googleusercontent.com/-P0AAUWUjrJE/YCuXFSqAJkI/AAAAAAAAGW8/RnJd1X358s0aLS8aohnIj49oqH_ZnpkVACLcBGAsYHQ/image-20210216183125727.png)](https://lh3.googleusercontent.com/-P0AAUWUjrJE/YCuXFSqAJkI/AAAAAAAAGW8/RnJd1X358s0aLS8aohnIj49oqH_ZnpkVACLcBGAsYHQ/image-20210216183125727.png)
 
    ​	1)	update  stock set price=20 where symbol="sun"; 
 
@@ -48,7 +48,7 @@
 
 5. 다음과 같은 테이블에서 price 필드의 값이 10인 모든 행을 삭제하기 위한 표준 SQL 중 적절한 것은?
 
-   ![image-20210216183125727](C:\Users\48434\AppData\Roaming\Typora\typora-user-images\image-20210216183125727.png)
+   [![img](https://lh3.googleusercontent.com/-P0AAUWUjrJE/YCuXFSqAJkI/AAAAAAAAGW8/RnJd1X358s0aLS8aohnIj49oqH_ZnpkVACLcBGAsYHQ/image-20210216183125727.png)](https://lh3.googleusercontent.com/-P0AAUWUjrJE/YCuXFSqAJkI/AAAAAAAAGW8/RnJd1X358s0aLS8aohnIj49oqH_ZnpkVACLcBGAsYHQ/image-20210216183125727.png)
 
    ​	1)	delete  from stock where price=10; 
 
@@ -62,7 +62,7 @@
 
 6. 다음과 같은 테이블에서 symbol필드의 값이 sun 인 데이터의 가격(price)만을 조회하기 위한 표준 SQL 중 적절한 것은?
 
-   ![image-20210216183125727](C:\Users\48434\AppData\Roaming\Typora\typora-user-images\image-20210216183125727.png)
+   [![img](https://lh3.googleusercontent.com/-P0AAUWUjrJE/YCuXFSqAJkI/AAAAAAAAGW8/RnJd1X358s0aLS8aohnIj49oqH_ZnpkVACLcBGAsYHQ/image-20210216183125727.png)](https://lh3.googleusercontent.com/-P0AAUWUjrJE/YCuXFSqAJkI/AAAAAAAAGW8/RnJd1X358s0aLS8aohnIj49oqH_ZnpkVACLcBGAsYHQ/image-20210216183125727.png)
 
    ​	1)	select *  from stock; 
 
@@ -83,6 +83,8 @@
    ​	3)	표준의 SQL  문장만을 지원함으로써 범용성을 증대시킨다. 
 
    ​	4)	자바는 단순히  문자열로 query를 전달할 뿐이고 해석은 각각의 벤더가 구현한 driver에서 담당한다. 
+
+   
 
 8. 다음은  JDBC를 이용한 일반적인 조회 과정이다. 순서대로 나열한 것은?
 

@@ -59,7 +59,7 @@ SQL(Structured Query Language)은 관계형 데이터베이스에서 사용되�
 
 > 주의할 점은 모든 DBMS의 SQL문이 완벽하게 동일하지 않다는 것이다. 그래서 각 회사는 표준 SQL을 지키면서 자신의 제품에 특화시킨 SQL을 사용한다.
 
-<img src="C:\Users\48434\AppData\Roaming\Typora\typora-user-images\image-20210216105613883.png" alt="image-20210216105613883" style="zoom: 33%;" />
+<img src="https://lh3.googleusercontent.com/-R_AIW2Ccbi0/YCuXKYEuYSI/AAAAAAAAGXA/cOWtpmjRGOIXDJQfO9aJSqfbcHBsPW-5gCLcBGAsYHQ/image.png" alt="img" style="zoom:50%;" />
 
 
 
