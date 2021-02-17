@@ -1,6 +1,6 @@
 1. 변수의 타입을  확인할 수 있는 함수는?
 
-   1) function() 	2) int() 	3) type() 	4) check()
+   1) function() 	2) int() 	<u>***3) type()***</u> 	4) check()
 
    
 
@@ -8,13 +8,13 @@
 
    [![img](https://lh3.googleusercontent.com/-P0AAUWUjrJE/YCuXFSqAJkI/AAAAAAAAGW8/RnJd1X358s0aLS8aohnIj49oqH_ZnpkVACLcBGAsYHQ/image-20210216183125727.png)](https://lh3.googleusercontent.com/-P0AAUWUjrJE/YCuXFSqAJkI/AAAAAAAAGW8/RnJd1X358s0aLS8aohnIj49oqH_ZnpkVACLcBGAsYHQ/image-20210216183125727.png)
 
-   1)	insert into stock values ("sun",  10.5); 
+   <u>***1)	insert into stock values ("sun",  10.5);***</u> 
 
-   2)	insert into stock values (sun, 10.5); 
+   2)	insert into stock values (~~sun~~, 10.5); 
 
-   3)	insert  into stock (symbol, price) values ("sun"); 
+   3)	insert into stock (symbol, price) values ("sun"~~);~~ 
 
-   4)	insert into stock values ("sun"); 
+   4)	insert into stock values ("sun"~~);~~ 
 
    
 
@@ -24,11 +24,11 @@
 
 ​		1)	CREATE  TABLE stock ( symbol char(20) not null, price float(10,2) default 0.00 );
 
-​		2)	CREATE  TABLE stock ( symbol char(20) primary key, price float(10,2) default 0.00  );     
+​		***2)	CREATE  TABLE stock ( symbol char(20) <u>primary key</u>, price float(10,2) default 0.00  );*** 
 
-​		3)	CREATE stock TABLE ( symbol char(20) not null,  price float(10,2) default 0.00 );
+​		3)	CREATE ~~stock TABLE~~ ( symbol char(20) not null,  price float(10,2) default 0.00 );
 
-​		4)	CREATE  stock TABLE ( symbol char(20) primary key, price float(10,2) default 0.00 );
+​		4)	CREATE  ~~stock TABLE~~ ( symbol char(20) primary key, price float(10,2) default 0.00 );
 
 
 
@@ -36,13 +36,13 @@
 
    [![img](https://lh3.googleusercontent.com/-P0AAUWUjrJE/YCuXFSqAJkI/AAAAAAAAGW8/RnJd1X358s0aLS8aohnIj49oqH_ZnpkVACLcBGAsYHQ/image-20210216183125727.png)](https://lh3.googleusercontent.com/-P0AAUWUjrJE/YCuXFSqAJkI/AAAAAAAAGW8/RnJd1X358s0aLS8aohnIj49oqH_ZnpkVACLcBGAsYHQ/image-20210216183125727.png)
 
-   ​	1)	update  stock set price=20 where symbol="sun"; 
+   ​	1)	update  stock set price=20 where ~~symbol="sun";~~ 
 
-   ​	2)	update stock set symbol="sun"  where price=20; 
+   ​	2)	update stock set symbol="sun"  where price=~~20~~; 
 
-   ​	3)	update  stock (price=20) where symbol="sun"; 
+   ​	3)	update  stock (price=20) where ~~symbol="sun";~~
 
-   ​	4)	update stock set price=20 where price=10;
+   ​	***<u>4)	update stock set price=20 where price=10;</u>***
 
    
 
@@ -50,13 +50,13 @@
 
    [![img](https://lh3.googleusercontent.com/-P0AAUWUjrJE/YCuXFSqAJkI/AAAAAAAAGW8/RnJd1X358s0aLS8aohnIj49oqH_ZnpkVACLcBGAsYHQ/image-20210216183125727.png)](https://lh3.googleusercontent.com/-P0AAUWUjrJE/YCuXFSqAJkI/AAAAAAAAGW8/RnJd1X358s0aLS8aohnIj49oqH_ZnpkVACLcBGAsYHQ/image-20210216183125727.png)
 
-   ​	1)	delete  from stock where price=10; 
+   ​	***<u>1)	delete  from stock where price=10;</u>*** 
 
-   ​	2)	delete  set symbol="sun" where price=10; 
+   ​	2)	delete  ~~set~~ symbol="sun" where price=10; 
 
-   ​	3)	delete  from stock set symbol="sun";. 
+   ​	3)	delete  from stock ~~set~~ symbol="sun";. 
 
-   ​	4)	delete  from stock where symbol="sun"; 
+   ​	4)	delete  from stock where ~~symbol="sun";~~
 
    
 
@@ -64,13 +64,13 @@
 
    [![img](https://lh3.googleusercontent.com/-P0AAUWUjrJE/YCuXFSqAJkI/AAAAAAAAGW8/RnJd1X358s0aLS8aohnIj49oqH_ZnpkVACLcBGAsYHQ/image-20210216183125727.png)](https://lh3.googleusercontent.com/-P0AAUWUjrJE/YCuXFSqAJkI/AAAAAAAAGW8/RnJd1X358s0aLS8aohnIj49oqH_ZnpkVACLcBGAsYHQ/image-20210216183125727.png)
 
-   ​	1)	select *  from stock; 
+   ​	1)	select ~~*~~  from stock; 
 
-   ​	2)	select *  from stock where price=10; 
+   ​	2)	select ~~*~~  from stock where price=10; 
 
-   ​	3)	select  price from stock where symbol="sun"; 
+   ​	*<u>**3)	select  price from stock where symbol="sun";**</u>* 
 
-   ​	4)	select  price from stock where symbol "sun"; 
+   ​	4)	select  price from stock where symbol ~~"sun";~~
 
    
 
@@ -80,7 +80,7 @@
 
    ​	2)	몇 개의 변수에  대한 조작으로 RDBMS의 교체가 가능하다. 
 
-   ​	3)	표준의 SQL  문장만을 지원함으로써 범용성을 증대시킨다. 
+   ​	3)	표준의 SQL 문장만을 지원함으로써 범용성을 증대시킨다. 
 
    ​	4)	자바는 단순히  문자열로 query를 전달할 뿐이고 해석은 각각의 벤더가 구현한 driver에서 담당한다. 
 
@@ -244,7 +244,7 @@
 
     ​	2)	select *  from notice where hit over 10
 
-    ​	3)	select *  from notice where hit >= 10
+    ​	3)	select *  from notice where ~~hit >= 10~~
 
     ​	4)	select *  from notice where hit ?= 10
 
