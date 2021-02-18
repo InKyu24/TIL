@@ -80,7 +80,7 @@
 
    ​	2)	몇 개의 변수에  대한 조작으로 RDBMS의 교체가 가능하다. 
 
-   ​	3)	표준의 SQL 문장만을 지원함으로써 범용성을 증대시킨다. 
+   ​	*<u>**3)	표준의 SQL 문장~~만~~을 지원함으로써 범용성을 증대시킨다.**</u>* 
 
    ​	4)	자바는 단순히  문자열로 query를 전달할 뿐이고 해석은 각각의 벤더가 구현한 driver에서 담당한다. 
 
@@ -92,7 +92,7 @@
 
    ​	1)	5-3-4-2-1 
 
-   ​	2)	3-5-4-1-2 
+   ​	***<u>2)	3-5-4-1-2</u>*** 
 
    ​	3)	3-4-5-1-2 
 
@@ -108,7 +108,7 @@
 
    ​	2)	Statement stmt =  Connection.createStatement(); 
 
-   ​	3)	Statement  stmt = con.createStatement(); 
+   ​	***<u>3)	Statement  stmt = con.createStatement();</u>*** 
 
    ​	4)	Statement  stmt = Connection.getStatement(); 
 
@@ -124,13 +124,13 @@
 
     ​	3)	PrepareStatement(String  sql)
 
-    ​	4)	prepareStatement(String  sql)
+    ​	***<u>4)	prepareStatement(String  sql)</u>***
 
     
 
 11. 다음은  PreparedStatement를 이용해서 DB에 질의하는 SQL을 표현한 것중 옳은 것은?
 
-    ​	1)	"insert  into members values( ?, ?, ? )" 
+    ​	***<u>1)	"insert  into members values( ?, ?, ? )"</u>*** 
 
     ​	2)	"insert  into members values( a, b, c )"
 
@@ -142,9 +142,9 @@
 
 12. 다음은  java.sql.ResultSet 클래스에 관한 설명입니다. 틀린 것을 고르시오.
 
-    ​	1)	RDBMS에  select에 관련된 질의를 했을 경우 리턴되어지는 타입이다. 
+    ​	1)	RDBMS에  select에 관련된 질의를 했을 경우 리턴되어지는 타입이다.
 
-    ​	2)	최초에 리턴  되었을 때는 커서는 결과의 첫 번째 데이터를 가리킨다. 
+    ​	***<u>2)	최초에 리턴  되었을 때는 커서는 ~~결과의 첫 번째 데이터~~를 가리킨다.</u>*** 
 
     ​	3)	다음 행(row)으로 이동할 때에는 next() 메서드를 이용한다. 
 
@@ -160,7 +160,7 @@
 
     ​	3)	executeQuery(String  sql)
 
-    ​	4)	executeUpdate(String  sql)
+    ​	***<u>4)	executeUpdate(String  sql)</u>***
 
     
 
@@ -168,7 +168,7 @@
 
     ​	1)	Connection
 
-    ​	2)	ResultSet
+    ​	***<u>2)	ResultSet</u>***
 
     ​	3)	ResultSetMetaData
 
@@ -184,7 +184,7 @@
 
     ​	3)	ResultSetMetaData
 
-    ​	4)	int
+    ​	***<u>4)	int</u>***
 
     
 
@@ -194,7 +194,7 @@
 
     ​	2)	java.lang
 
-    ​	3)	java.sql
+    ​	***<u>3)	java.sql</u>***
 
     ​	4)	javax.sql
 
@@ -208,7 +208,7 @@
 
     ​	3)	jdbc,
 
-    ​	4)	jdbc:
+    ​	***<u>4)	jdbc:</u>***
 
     
 
@@ -232,7 +232,7 @@
 
     ​	2)	select ?  from department 
 
-    ​	3)	select *  from department where floor=?
+    ​	***<u>3)	select *  from department where floor=?</u>***
 
     ​	4)	select *  from department where floor=1
 
@@ -240,7 +240,7 @@
 
 19. notice  라는 이름의 테이블에서 조회수(hit)가 10초과의 행만 조회하기 위한 SQL은?
 
-    ​	1)	select *  from notice where hit > 10
+    ​	***<u>1)	select *  from notice where hit > 10</u>***
 
     ​	2)	select *  from notice where hit over 10
 
@@ -253,7 +253,7 @@
 20. 다음 코드의  여기 부분에 들어갈 알맞은 코드는?    
 
     ```java
-    String sql = "insert into department(deptno, deptname,floor) values  (?,?,?)";
+    String sql = "insert into department(deptno, deptname, floor) values  (?,?,?)";
     int deptno = 1;      
     String deptname =  "deptname";  
     int floor = 1;            
@@ -262,13 +262,13 @@
     psmt.executeUpdate();
     ```
 
-    ​	1)	psmt.setInt(0,  deptno);       psmt.setString(1, deptname);       psmt.setInt(2, floor);
+    ​	1)	psmt.setInt(~~0~~,  deptno);       psmt.setString(~~1~~, deptname);       psmt.setInt(~~2~~, floor);
 
-    ​	2)	psmt.setInt(0,  deptno);       psmt.setInt(1, deptname);       psmt.setInt(2, floor);
+    ​	2)	psmt.setInt(~~0~~,  deptno);       psmt.set~~Int(1~~, deptname);       psmt.setInt(~~2~~, floor);
 
-    ​	3)	psmt.setInt(1,  deptno);       psmt.setString(2, deptname);       psmt.setInt(3, floor);
+    ​	***<u>3)	psmt.setInt(1,  deptno);       psmt.setString(2, deptname);       psmt.setInt(3, floor);</u>***
 
-    ​	4)	psmt.setInt(1,  deptno);       psmt.setInt(2, deptname);       psmt.setInt(3, floor);
+    ​	4)	psmt.setInt(1,  deptno);       psmt.set~~Int~~(2, deptname);       psmt.setInt(3, floor);
 
     
 
@@ -276,7 +276,7 @@
 
     ​	1)	public  interface PreparedStatement implements Statement
 
-    ​	2)	public  interface PreparedStatement extends Statement 
+    ​	***<u>2)	public  interface PreparedStatement extends Statement</u>*** 
 
     ​	3)	public  class PreparedStatement implements Statement
 
@@ -284,7 +284,7 @@
 
     
 
-22. 다음 중 반납과  상관없는 자원은?
+22. 다음 중 반납과 상관없는 자원은?
 
     ​	1)	DriverManager
 
@@ -316,17 +316,17 @@
 
     ​	3)	getChar
 
-    ​	4)	getString
+    ​	***<u>4)	getString</u>***
 
     
 
-25. 퀴리의 결과  데이터를 얻을 수 있는 인터페이스는?
+25. 퀴리의 결과 데이터를 얻을 수 있는 인터페이스는?
 
     ​	1)	Connection
 
     ​	2)	PreparedStatement
 
-    ​	3)	ResultSet
+    ​	***<u>3)	ResultSet</u>***
 
     ​	4)	DriverManager
 
@@ -338,7 +338,7 @@
 
     ​	2)	catch(Exception  e) { 여기 }
 
-    ​	3)	finally {  여기 }
+    ​	***<u>3)	finally {  여기 }</u>***
 
     ​	4)	main( ) {  여기 }
 
