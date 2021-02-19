@@ -286,7 +286,7 @@
 
 22. 다음 중 반납과 상관없는 자원은?
 
-    ​	1)	DriverManager
+    ​	***<u>1)	DriverManager</u>***
 
     ​	2)	Connection
 
@@ -300,7 +300,7 @@
 
     ​	1)	1-tier  architecture
 
-    ​	2)	2-tier  architecture
+    ​	***<u>2)	2-tier  architecture</u>***
 
     ​	3)	3-tier  architecture
 
