@@ -279,4 +279,75 @@ public class Casting {
 
 
 
-https://opentutorials.org/course/3930/26661부터 진행
+## 프로그래밍
+
+프로그램의 어원에는 시간의 순서에 따라 공연이 순차적으로 진행이 되는 것에서 출발한다. 그 이후로 시간의 순서에 따라 무언가가 일어나는 성격의 것들을 프로그램이라고 부른다. 컴퓨터가 가지고 있는 각각의 작업의 하나하나들이 시간의 순서에 따라 실행되게 할 수 있게, 자동화된 처리를 할 수 있게 된다. 따라서 이를 프로그램이라고 부를 수 있게 되는 것이다.
+
+```java
+public class Program {
+    public static void main(String[] args) {
+        System.out.println(1);
+        System.out.println(2);
+        System.out.println(3);
+    }
+}
+```
+
+상상력을 통해 위의 단순한 코드가 매우 중요한 길고 복잡한 코드이고, 많은 사람들이 함께 쓰는 코드라고 생각해보자. 내가 하고 싶은 취지에 맞게 코드를 배치하면 순차적으로 컴퓨터가 가진 하나하나의 기능들이 자동화되어 작동된다. 게다가 각각의 작업들이 언제 끝나게 될 지 예측할 수 없는 작업이라고 가정해본다면, 순차적으로 실행되는 프로그램을 통해 이를 쉽게 통제할 수 있다. 그리고 다양한 프로그래밍 언어 중에 대표적인 언어가 바로 Java인 것이다.
+
+프로그램을 만드는 경우에 혼자서 처음부터 끝까지 모두 만드는 것은 매우 드문 경우이다. 다른 사람이 만든 어떤 부품을 가지고 와서 나의 완제품을 만드는 것이고, 나의 완제품은 또 누군가의 부품이 될 수 있는 형태이다. 
+
+누군가가 프로그램을 만들었다고 가정하자. 그 프로그램을 이용하면 엘리베이터를 호출할 수 있고, 시큐리티를 해제할 수 있고, 전자제품의 전원을 켜고 끌 수 있으며, 나아가서는 냉장고에 무엇이 들었는 지까지 알 수 있다고 하자. 그리고 나는 그 코드의 사용자가 되어, 내가 원하는 일에 따라 그리고 시간에 흐름에 따라 코드를 배치하여 원하는 애플리케이션을 제작하고자 할 것이다. 
+
+나는 집에 도착하기 전에 엘리베이터를 부르고, 현관문의 잠금장치가 자동으로 해제되고, 전등이 자동으로 켜지도록 할 것이다. 이러한 각각의 실행들이 순서대로 이뤄지도록 할 것이다. 그렇게 제작된 프로그램의 예시는 아래와 같다. 실제로 그렇게 실행이 되는 것은 아니지만 프로그래밍을 이해하기 위한 용도로 생각해두자.
+
+ ```java
+// 나에게 필요한 클래스를 불러오기
+import org.opentutorials.iot.Elevator;
+import org.opentutorials.iot.Lighting;
+import org.opentutorials.iot.Security;
+ 
+public class OkJavaGoInHome {
+ 
+    public static void main(String[] args) {
+        // 집 주소를 문자열 데이터 타입으로, 변수명 id 생성
+        String id = "JAVA APT 507";	
+        
+        // Elevator call 
+        // 엘리베이터라는 데이터 타입으로, 변수명 myElevator 생성
+        Elevator myElevator = new Elevator(id);
+        // myElevator를 1층으로 호출하는 실행문 호출
+        myElevator.callForUp(1); 
+         
+        // Security off 
+        // 시큐리티라는 데이터 타입으로, 변수명 
+        Security mySecurity = new Security(id); mySecurity 생성
+        // mySecurity를 끄는 메소드 호출
+        mySecurity.off(); 
+         
+        // Light on
+        // 라이팅이라는 데이터 타입으로, 변수명 hallLamp 생성
+        Lighting hallLamp = new Lighting(id+" / Hall Lamp"); 
+        // hallLamp를 끄는 메소드 호출.
+        hallLamp.on(); 
+        // 라이팅이라는 데이터 타입으로, 변수명 floorLamp 생성 
+        Lighting floorLamp = new Lighting(id+" / floorLamp"); 
+        // floorLamp를 끄는 메소드 호출
+        floorLamp.on(); 
+    }
+}
+ ```
+
+
+
+## 디버거
+
+코딩이 편해질 수 있는 지름길 중 하나는 디버거라는 것이다. 내가 짠 코드에 의도하지 않은 문제를 버그라고 하고, 이를 잡는 행위를 디버깅, 그리고 디버깅을 할 때 사용하는 도구를 디버거라고 부른다. 여러 가지 현대적인 개발 도구들은 디버거를 내장하고 있다. 이클립스에서 디버거를 다루게 된다면 어떤 개발 도구에서도 디버거를 다루기가 쉬워질 것이다.
+
+만약 코드에서 문제가 발생했다면 첫 번째로 취해야하는 행동은 실행을 멈추는 것이다. 멈추고 싶은 코드를 더블클릭하게 되면 좌측에 푸른 점이 생기는 데, 이를 브레이크 포인터라고 부른다. 그 다음, 벌레 모양의 버튼을 누르게 되면 Perspective가 Switching되고, 브레이크 포인트에서 실행이 멈추게 된다. 그리고 Stepover 버튼(`F6`)을 클릭하면, 브레이크 포인트 다음 코드 하나하나씩을 실행시킬 수 있으며, 실행되는 순간마다 애플리케이션 내의 변수의 상태를 하나하나 확인할 수 있게 된다.
+
+만약 브레이크 포인트를 2개 이상 설정해 놓았다면, Resume 버튼(`F8`)로 다음 브레이크 포인트까지 바로 이동할 수도 있으며, StepInto(`F5`)와 StepReturn(`F7`) 버튼으로 구체적인 메소드의 코드를 확인하고, 다시 원래 코드로 돌아올 수 있게 된다.
+
+
+
+https://opentutorials.org/course/3930/26663 여기부터 시작!
