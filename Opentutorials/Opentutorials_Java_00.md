@@ -350,4 +350,86 @@ public class OkJavaGoInHome {
 
 
 
-https://opentutorials.org/course/3930/26663 여기부터 시작!
+## 입력과 출력
+
+프로그램은 입력(Input)을 처리해서 출력(Output)을 만들어 내는 기계라고 할 수 있다. Java에서는 Argument, File, Network, Audio, Program 등 다양한 방식으로 입력값을 줄 수 있다. 가장 일반적인 것은  Argument라고 해서 프로그램을 실행할 때 어떤 텍스트를 주는 것이다. 이렇게 입력을 받아서 결과를 출력할 수 있게 된다. 출력의 방식은 Monitor 화면에 띄어질 수도 있으며, File, Audio, Program 등의 다양한 형태가 될 수 있다.
+
+```java
+// swing에 속한 JOptionPane API 가져오기
+import javax.swing.JOptionPane;
+
+import org.opentutorials.iot.DimmingLights;
+import org.opentutorials.iot.Elevator;
+import org.opentutorials.iot.Lighting;
+import org.opentutorials.iot.Security;
+ 
+public class OkJavaGoInHomeInput {
+    public static void main(String[] args) {
+        // 값을 입력할 수 있는 JOptionpane 생성
+        String id = JOptionPane.showInputDialog("Enter a ID");
+        String bright = JOptionPane.showInputDialog("Enter a Bright level");
+        
+        Elevator myElevator = new Elevator(id);
+        myElevator.callForUp(1); 
+         
+        Security mySecurity = new Security(id); mySecurity 생성
+        mySecurity.off(); 
+         
+        Lighting hallLamp = new Lighting(id+" / Hall Lamp");  
+        hallLamp.on(); 
+        Lighting floorLamp = new Lighting(id+" / floorLamp"); 
+        floorLamp.on(); 
+        
+        DimmingLights moodLamp = new DimmingLights(id+" moodLamp");
+        // Double.parseDoublce(bright)만큼의 밝기로 조절
+        // 변수 bright의 데이터 타입을 String에서 double로 변환
+        moodLamp.setBright(Double.parseDouble(bright));
+        moodLamp.on();
+    }
+}
+```
+
+보편적으로 사용되는 방법이 있다. 명령어로 실행되는 프로그램에 파라미터를 통해서 Arguments를 전달하는 방식이다. `Run Configurations`에서 해당하는 Java Application을 선택하고, Arguments에 입력값을 넣을 수 있게 된다. Arguments에 값을 넣을 때는 띄어쓰기로 구분하기 때문에 띄어쓰기가 포함된 데이터를 입력할 경우에는 따옴표를 이용하여, 하나의 값이라는 표시를 해주어야 한다. Arguments에 입력한 값들을 코드 내에서 입력값으로 사용하기 위한 방법은 args[0], args[1]....을 해당하는 위치에 넣으면 된다.
+
+```java
+import org.opentutorials.iot.DimmingLights;
+import org.opentutorials.iot.Elevator;
+import org.opentutorials.iot.Lighting;
+import org.opentutorials.iot.Security;
+ 
+public class OkJavaGoInHomeInput {
+    // paramter, 매개변수
+    public static void main(String[] args) {
+        
+        // 문자열 데이터 타입으로, 변수명 id 생성 (값은 첫번째 Argument)
+        String id = args[0];
+        // 문자열 데이터 타입으로, 변수명 bright 생성 (값은 두번째 Argument)
+        String bright = args[1];
+
+        Elevator myElevator = new Elevator(id);
+        myElevator.callForUp(1);
+
+        Security mySecurity = new Security(id);
+        mySecurity.off();
+
+        Lighting hallLamp = new Lighting(id+" / Hall Lamp");
+        hallLamp.on();
+         
+        Lighting floorLamp = new Lighting(id+" / floorLamp");
+        floorLamp.on();
+         
+        DimmingLights moodLamp = new DimmingLights(id+" moodLamp");
+        moodLamp.setBright(Double.parseDouble(bright));
+        moodLamp.on();
+    }
+}
+```
+
+
+
+
+
+
+
+
+
