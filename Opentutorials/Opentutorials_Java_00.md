@@ -427,6 +427,48 @@ public class OkJavaGoInHomeInput {
 
 
 
+## 이클립스 없이 컴파일
+
+이클립스 없이도 Java가 설치되어 있고, 환경변수(Path)가 설정되어 있다면 Source 코드를 실행시킬 수 있게 된다.
+
+`Java Source code (Program.java)`가 있고, 컴파일을 통해서 `Java Application (Program.class)`로 변환시킨 뒤, JVM을 통해 이를 실행시킬 것이다.
+
+1. 윈도우에서 cmd를 실행시키고, Source code가 저장되어 있는 디렉토리로 이동한다.
+
+   명령어 `cd 경로`를 통해 이동하고, 명령어 `dir`로 디렉토리 내 파일들을 확인할 수 있다.
+
+2. Program.java 파일을 Program.class 파일로 변환한다.
+
+   명령어`javac Program.java`를 통해 컴파일한 뒤, 명령어 `dir`로 Program.class 파일이 생성된 것을 확인할 수 있다.
+
+3. Program.class 파일을 실행시킨다.
+
+   명령어 `java Program`을 통해 실행시킨다.
+
+   
+
+만약에 나의 프로그램이 타인이 만든 것을 재사용한 프로그램이라면 조금은 더 복잡해진다. Import를 통해 Elevator, Lighting, Security 클래스들을 불러와 사용한 코드들을 이클립스 없이 컴파일하고 실행시켜보자.
+
+1. 윈도우에서 cmd를 실행시키고, Source code가 저장되어 있는 디렉토리로 이동한다.
+
+   명령어 `cd 경로`를 통해 이동하고, 명령어 `dir`로 디렉토리 내 파일들을 확인할 수 있다.
+
+2. OKJavaGoInHome.java 파일을 OKJavaGoInHome.class 파일로 변환한다.
+
+   명령어`javac OKJavaGoInHome.java`를 통해 컴파일하게 되면, 명령어 `dir`로 OKJavaGoInHome.class 파일이 생성된 것은 물론이고, Import 되어 있던 소스 파일들도 .class 파일로 변환된 것을 알 수 있다.
+
+   > OKJavaGoInHome.java 파일과 같은 디렉토리 내에 Import하기 위한 패키지가 없고, lib라는 디렉토리 안으로 패키지가 이동되었다면, 명령어 `javac -cp ".;lib" OKJavaGoInHome.java`로 컴파일해야 한다.
+
+3. Program.class 파일을 실행시킨다.
+
+   명령어 `java Program`을 통해 실행시킨다.
+
+   > OKJavaGoInHome.java 파일과 같은 디렉토리 내에 Import하기 위한 패키지가 없고, lib라는 디렉토리 안으로 패키지가 이동되었다면, 명령어 `java -cp ".;lib" OKJavaGoInHome`를 실행해야 한다.
+
+
+
+그렇다면 Arguments를 입력값으로 넣은 소스 코드를 이클립스 없이 어떻게 실행하는지에 대해서도 알아보자. 컴파일 후 실행할 때, 명령어 `java OKJavaGoInHomeInput "JAVA APT 507" 15.0` 를 입력해 Arguments 값을 넣어주면 된다.
+
 
 
 
