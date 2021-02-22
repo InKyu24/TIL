@@ -471,7 +471,14 @@ public class OkJavaGoInHomeInput {
 
 
 
+## Java 문서 보는 법
+
+Java에서는 더 쉽게 프로그램을 만들 수 있도록 여러 가지 부품들을 제공한다. 화면에 무언가 출력하고 싶을 때는 System, 날짜를 알고 싶을 때는 Date, 수학적인 것들을 이용하기 위해서는 Math를 사용하는 것처럼 말이다. 이렇게 Java가 기본적으로 내장하고 있는 기능들을 기본 라이브러리라고 부른다. 기본 라이브러리의 조작방법을 Java Application Programming Interface(Java API)라고 부른다. 프로그램을 잘 만들기 위해서는 어떤 API가 있고, 그 API는 어떻게 조작하는가를 풍부하게 알고 사용할 수 있게 되는 것이 좋은 프로그래머가 되는 초석이라고 할 수 있겠다.  이렇게 만들어진 결과물이 누군가에게 사용된다면  User Interface(UI)라고 할 수 있다. 또한 결과물이 또 다른 프로그램을 위해 이용될 수도 있다. 그런 경우에는 새로운 API가 되는 것이다.
 
 
 
+### API Document
 
+Java의 API Document는 Java의 공식 사용설명서로 Java를 공부하는 것에서 자립하기 위한 핵심적인 기술이라고 할 수 있다. 검색 엔진을 통해 api documentation java를 검색하면 API Document를 볼 수가 있다. 최초 화면의 좌측 하단에는 모든 클래스들을 확인할 수 있다.
+
+https://opentutorials.org/course/3930/26665 두번째부터 진행
