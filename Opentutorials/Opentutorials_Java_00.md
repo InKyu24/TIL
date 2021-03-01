@@ -481,9 +481,15 @@ Java에서는 더 쉽게 프로그램을 만들 수 있도록 여러 가지 부�
 
 Java의 API Document는 Java의 공식 사용설명서로 Java를 공부하는 것에서 자립하기 위한 핵심적인 기술이라고 할 수 있다. API Document에는 Java가 기본적으로 제공하는 부품들인 라이브러리에 대한 설명들을 확인할 수 있다. 검색 엔진을 통해 Api documentation java를 검색하면 Java API Document를 볼 수가 있다. 최초 화면의 좌측 하단에 All Classes에서 약 4천 개 정도의 모든 클래스들을 확인할 수 있다. 각 클래스들은 하나의 프로그램이라고 인식하자.
 
+#### Package
+
 만약 수학과 관련된 작업을 해야한다면, Math 클래스를 검색해서 클릭하게 되면, 우측 화면에서 Math  클래스에 대한 상세정보를 볼 수 있게 된다. Math 클래스 우측 화면에서 java.lang을 살펴보자. 이것은 math라는 클래스 속해있는 패키지라고 하는 것이다. 클래스가 엄청나게 많아지면, 수많은 클래스를 정리해야 할 필요성을 느낄 것이다. 게다가 이미 존재하는 이름의 클래스를 만들고자 한다면 서로 충돌하기 때문에 같은 곳에 둘 수 없을 것이다. 이러한 문제를 해결하기 위한 것이 패키지다.
 
-좌측 상단에서는 java가 기본적으로 제공하는 패키지들의 목록이 볼 수가 있다. java.lang 패키지를 찾아서 선택하게 되면 좌측 하단에는 이제 java.lang 패키지에 속한 클래스들이 나타나게 된다. String도 java.lang 패키지에서 찾아볼 수 있다. 이렇게 패키지는 서로 연관된 성격의 클래스들을 모아 이름을 붙인 것이라는 것을 알게 되었다. 이제 클래스를 다시 정의해보면 클래스는 서로 연관된 변수와 메소드라는 것들을 모아서 이름을 붙인 것이다. 다시 정리해보자. 여러 개의 클래스들을 그룹화하여 이름을 붙인 것이 바로 패키지이고, 각각의 클래스는 변수들과 메소드들을 그룹화하여 이름 붙인 것이다.
+좌측 상단에서는 java가 기본적으로 제공하는 패키지들의 목록을 볼 수가 있다. java.lang 패키지를 찾아서 선택하게 되면 좌측 하단에는 이제 java.lang 패키지에 속한 클래스들이 나타나게 된다. String도 java.lang 패키지에서 찾아볼 수 있다. 이렇게 패키지는 서로 연관된 성격의 클래스들을 모아 이름을 붙인 것이라는 것을 알게 되었다.
+
+#### Class
+
+이제 클래스를 다시 정의해보면 클래스는 서로 연관된 변수와 메소드라는 것들을 모아서 이름을 붙인 것이다. 다시 정리해보자. 여러 개의 클래스들을 그룹화하여 이름을 붙인 것이 바로 패키지이고, 각각의 클래스는 변수들과 메소드들을 그룹화하여 이름 붙인 것이다.
 
 클래스가 무엇인가를 알아보기 위한 실습을 시작해보자. 수학과 관련된 작업이 필요한 상황이라면 java 기본 라이브러리에서 제공하는 Math라는 클래스를 이용할 수 있다. Math를 적고 .을 누르면 Math 클래스에 소속되어있는 변수나 메소드라고 하는 것들의 리스트들을 확인할 수 있다. 만약 파이 값이 필요하다면 PI를 선택할 수 있을 것이다. 그렇게 되면 파이의 구체적인 값이 저장되어 있는 변수 PI를 가져올 수 있게 되는 것이다. Math 클래스를 다시 이용해보자. 소수점의 내림과 올림이 필요한 경우에는 어떨까? Math 클래스에 소속되어있는 floor와 ceil 메소드를 가져오면 쉽게 처리할 수 있을 것이다.
 
@@ -496,4 +502,75 @@ public class ClassApp {
     }
 }
 ```
-강의 4부터 진행 https://opentutorials.org/course/3930/26665
+#### Instance
+
+클래스는 서로 연관된 변수와 메소드를 모아서 이름을 붙인 것이라는 것을 알게 되었다. 이번엔 PrintWriter라는 클래스를 통해 인스턴스라는 것을 파악해보자. PrintWriter 클래스는 이전에 배운 Math 클래스와는 사용법이 다르다. PrinterWriter 클래스는 소괄호가 들어있으며, 그 안에는 내가 저장하고 싶은 파일의 이름이 들어간다. 그 앞에 new를 붙여서 PrintWriter의 복제본을 만들 수 있게 된다. 따라서 p1은 PrintWriter의 인스턴스가 되는 것이다. 그리고 p1이 PrintWriter의 클래스의 인스턴스만 받는다는 규제의 의미에서 p1의 앞부분에 PrintWriter라고 적게 된다.
+
+왜 PrintWriter 클래스는 Math 클래스와 달리 인스턴스를 생성하는 것일까? 인스턴스는 내부적으로 각자의 상태를 가지게 된다. p1 인스턴스는 "result1.txt"라는 상태를, p2 인스턴스는 "result2.txt"라는 상태를 내장하고 있는 것처럼 말이다. Math 클래스는 1회성의 작업을 위해 고안된 클래스라면, PrintWriter 클래스는 후속적인 여러 작업을 할 수도 있고, 동시에 다양한 인스턴스를 생성해 작업할 수도 있도록 고안된 클래스이다.
+
+#### Constructor
+
+API에서 Math 클래스와 PrintWriter 클래스를 찾아보면, PrintWriter 클래스에서만 생성자라고 하는 Constructor를 확인할 수 있다. Constructor가 있다는 것은 이를 이용해 인스턴스를 만드는 것이 허용되어 있다고 볼 수 있다. 또한 구체적으로 API를 찾아보면 Constructor의 괄호 안에 입력값으로 들어올 수 있는 값에 대한 설명, 해당 클래스를 사용하는 과정에서 생길 수 있는 오류들 등을 알아볼 수 있게 된다.
+
+```java
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.PrintWriter;
+public class InstanceApp {
+
+    public static void main(String[] args) throws IOException{
+		PrintWriter p1 = new PrintWriter("result1.txt");
+		p1.write("Hello 1");
+		p1.close();
+		
+		PrintWriter p2 = new PrintWriter("result2.txt");
+		p2.write("Hello 2");
+		p2.close();	
+	}
+}
+```
+
+#### Inheritance
+
+이번에는 Java에서 굉장히 중요한 상속이라는 것을 알아보자. 앞서 알아본 PrintWriter 클래스를 API에서 확인해보면, java.io.PrintWriter 클래스는 java.io.Writer라는 클래스를 상속받았고, java.io.Writer라는 클래스는 java.lang.Object 클래스를 상속받은 것을 알 수 있다.
+
+```java
+public abstract class PrintWriter extends Writer
+```
+
+```java
+public abstract class Writer extends Object
+```
+
+어떤 기능을 만들 때, 처음부터 끝까지 다 만드는 것은 어렵기에 Writer라는 클래스가 가지고 있는 메소드와 변수들을 그대로 물려받으면서, 거기에다 자신이 원하는 메소드와 변수들을 추가한 것이 PrintWriter 클래스가 된다는 것이다. 마찬가지로 Writer라는 클래스도 Object 클래스가 가지고 있는 메소드와 변수들을 그대로 물려받으면서, Writer만이 필요로 하는 메소드와 변수들을 추가한 것으로 볼 수 있다.
+
+이클립스에서 Open Type Hierarchy를 이용하면, 상속 관계를 파악할 수 있다. Object 클래스에서는 toString 메소드를 확인할 수 있고, Writer 클래스와 PrintWriter 클래스에서는 toString 메소드를 확인할 수 없지만 Object 클래스가 부모 클래스(상속하고 있는 상위 클래스)로 위치하고 있기 때문에 toString 메소드를 사용할 수 있다. 여기서 알 수 있는 것은 Java의 모든 클래스는 Object 클래스를 상속받고 있다. 즉, Object 클래스가 최상위 클래스이다. PrintWriter의 인스턴스를 생성하여 toString 메소드를 사용하게 되면, PrintWriter 클래스에 toString 메소드가 있는지 확인하고 없으면, 부모 클래스인 Writer 클래스에서 확인하게 된다. 다시 Writer 클래스에도 없다면, 부모 클래스인 Object 클래스에서 확인하게 된다. 만약에 Object 클래스에도 없다면 오류가 발생하게 되고, 있다면 toString 메소드가 실행되는 것이다.
+
+#### Override
+
+다시 Open Type Hierarchy를 통해 상속 관계를 파악해보자. Write 클래스에는 입력값을 String으로 받는 write 메소드가 정의되어 있다. 그런데 PrintWriter 클래스에도 입력값을 String으로 받는 write 메소드가 정의되어 있다.  쉽게 말하면, 상속받는 PrintWriter 클래스에서 부모 클래스에 있는 메소드를 덮어쓰기 한 것이다. PrintWriter의 인스턴스를 생성하여 write 메소드를 사용하게 되면, PrintWriter 클래스에 write 메소드가 있기 때문에 부모 클래스인 Writer 클래스에 write 메소드가 있다 하더라도, 해당 클래스의 메소드를 사용하게 되는 것이다. 이러한 것을 부모 클래스에 있는 메소드를 자식 클래스에서 Override 했다라고 표현한다.
+
+```java
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.PrintWriter;
+public class InstanceApp {
+ 
+    public static void main(String[] args) throws IOException{
+         
+        PrintWriter p1 = new PrintWriter("result1.txt");
+        p1.write("Hello 1");
+        p1.close();
+         
+        PrintWriter p2 = new PrintWriter("result2.txt");
+        p2.write("Hello 2");
+        p2.close();
+        System.out.println(p1.toString());
+        p2.toString();
+        p2.write("Hello 2");
+
+    } 
+}
+```
+
+https://opentutorials.org/course/3930/26666 부터 시작!
