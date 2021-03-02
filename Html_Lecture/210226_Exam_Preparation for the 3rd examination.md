@@ -295,4 +295,6 @@
     ***<u>3) JSON.stringify()</u>***
 
     4) JSON.json()
+    
+    > JSON.parse()는 JSON data를 자바스크립트 객체로 바꿔주는 함수이다
 
