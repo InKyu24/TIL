@@ -573,4 +573,92 @@ public class InstanceApp {
 }
 ```
 
-https://opentutorials.org/course/3930/26666 부터 시작!
+
+
+## 나의 앱 만들기 1
+
+내가 물건을 판매하는 사업을 하고 있다고 상상해보자. 세금, 인건비, 유통비와 같은 비용도 발생하고, 그리고 비용을 제한 그 이익을 동업자와 공평하게 분배를 해야한다. 이런 작업을 위한 프로그램을 직접 만들어보려 한다. 이에 필요한 기본 기능들을 시스템 출력 메소드로 구현한다면 아래와 같다.
+
+```java
+Public class AccountingApp {
+    public static void main(String[] args) {
+        System.out.println("Value of supply : "+10000.0);
+        System.out.println("VAT : "+ (10000.0 * 0.1));
+        System.out.println("Total : "+ (10000.0 + 10000.0 * 0.1);
+		System.out.println("Expense : "+ (10000.0 * 0.3));
+        System.out.println("Income : "+ (10000.0 - 10000.0 * 0.3));
+        System.out.println("Dividend 1: "+ (10000.0 - 10000.0 * 0.3) * 0.5);
+        System.out.println("Dividend 2: "+ (10000.0 - 10000.0 * 0.3) * 0.3);
+        System.out.println("Dividend 3: "+ (10000.0 - 10000.0 * 0.3) * 0.2);      
+    }
+}
+```
+
+이제 위 코드에 변수를 도입해보려 한다. 각각의 데이터들이 어떤 의미를 갖는지를 변수를 통해 이름을 붙여주면 아래와 같이 더 보기 좋은 코드가 되었다. 이로 인해 계산할 숫자의 변화가 생겼을 때, 더욱 손쉽게 변경하고 변화를 확인할 수 있게 되었다.
+
+```java
+Public class AccountingApp {
+    public static void main(String[] args) {
+        double valueOfSupply = 10000.0
+        double varRate = 0.1;
+        double expenseRate= 0.3;
+        double vat = valueOfSupply * varRate;
+        double total = valueOfSupply + vat;
+        double expense = valueOfSupply * expenseRate;
+        double income = valueOfSupply - expense;
+        double dividend1 = income * 0.5;
+        double dividend1 = income * 0.3;
+		double dividend1 = income * 0.2;           
+        
+        System.out.println("Value of supply : "+valueOfSupply);
+        System.out.println("VAT : "+ vat);
+        System.out.println("Total : "+ total);
+		System.out.println("Expense : "+ expense);
+        System.out.println("Income : "+ income);
+        System.out.println("Dividend1: "+ dividend1);
+        System.out.println("Dividend2: "+ dividend1);
+        System.out.println("Dividend3: "+ dividend1);      
+    }
+}
+```
+
+보통 프로그래머들이 부끄러워하는 일이 있다.  데이터가 바뀌었다고 코드를 바꾸고, 데이터가 바뀌었다고 로직을 바꾸는 일들이다. 따라서 데이터의 입력값이 변화하여도 출력값이 나타날 수 있도록 Run configuration에서 arguments의 값을 통해 valueOfSupply의 변수값을 넣어주었다. 그리고 args의 배열은 String 객체로 저장되기 때문에 이를 Double 객체로 타입을 변경해주었다.
+
+만약 기존 데이터 입력값을 바꾸지 않고, 다른 데이터 입력값을 넣고 싶다면 Run configuration에서 Java Application을 Duplicate하게 되면 복사된 Application이 생성하여, 새롭게 생성된 Application에 arguments 값에 다른 데이터 입력값을 넣을 수 있게 된다.
+
+또한 이클립스 없이 Java application을 실행할 수 있다. cmd를 실행하여 해당 경로로 이동한 뒤, `javac AccountingApp.java`를 실행하게 되면 클래스 파일이 컴파일된다. 하지만 `java AccountingApp`를 입력하면 에러가 발생한다. 왜냐하면 arguments를 세팅하지 않았기 때문이다. 이를 해결하기 위해서는 뒤에 arguments 값을 넣어, `java AccountingApp 10000.0` 처럼 실행하게 되면 결과를 출력받을 수 있게 된다.
+
+컴파일된 클래스 파일을 가지고 있다면, JRE 또는 JVM이 설치되어 있는 디바이스 어디에서나 이와 같이 Application을 실행할 수 있게 된다. 만약 JRE 또는 JVM도 설치가 되어 있지 않은 어떤 컴퓨터에서 Application을 실행하고 싶다면, `launch4j`와 같은 소프트웨어를 찾아서 이용하면 된다.
+
+```java
+Public class AccountingApp {
+    public static void main(String[] args) {
+        double valueOfSupply = Double.parseDouble(args[0]);
+        double varRate = 0.1;
+        double expenseRate= 0.3;
+        double vat = valueOfSupply * varRate;
+        double total = valueOfSupply + vat;
+        double expense = valueOfSupply * expenseRate;
+        double income = valueOfSupply - expense;
+        double dividend1 = income * 0.5;
+        double dividend1 = income * 0.3;
+		double dividend1 = income * 0.2;           
+        
+        System.out.println("Value of supply : "+valueOfSupply);
+        System.out.println("VAT : "+ vat);
+        System.out.println("Total : "+ total);
+		System.out.println("Expense : "+ expense);
+        System.out.println("Income : "+ income);
+        System.out.println("Dividend1: "+ dividend1);
+        System.out.println("Dividend2: "+ dividend1);
+        System.out.println("Dividend3: "+ dividend1);      
+    }
+}
+```
+
+
+
+## 나의 앱 만들기 2
+
+https://opentutorials.org/course/3930/26667
+
