@@ -594,6 +594,8 @@ Public class AccountingApp {
 }
 ```
 
+
+
 이제 위 코드에 변수를 도입해보려 한다. 각각의 데이터들이 어떤 의미를 갖는지를 변수를 통해 이름을 붙여주면 아래와 같이 더 보기 좋은 코드가 되었다. 이로 인해 계산할 숫자의 변화가 생겼을 때, 더욱 손쉽게 변경하고 변화를 확인할 수 있게 되었다.
 
 ```java
@@ -621,6 +623,8 @@ Public class AccountingApp {
     }
 }
 ```
+
+
 
 보통 프로그래머들이 부끄러워하는 일이 있다.  데이터가 바뀌었다고 코드를 바꾸고, 데이터가 바뀌었다고 로직을 바꾸는 일들이다. 따라서 데이터의 입력값이 변화하여도 출력값이 나타날 수 있도록 Run configuration에서 arguments의 값을 통해 valueOfSupply의 변수값을 넣어주었다. 그리고 args의 배열은 String 객체로 저장되기 때문에 이를 Double 객체로 타입을 변경해주었다.
 
@@ -658,7 +662,263 @@ Public class AccountingApp {
 
 
 
-## 나의 앱 만들기 2
+제어문을 통해서 위의 AccountingApp 클래스를 좀 더 개선을 시켜보자.
 
-https://opentutorials.org/course/3930/26667
+현재는 income을 5:3:2 비율로 나누고 있다. 하지만 어떠한 이유로 인해서 income이 10,000원 보다 작은 경우에는 10:0:0으로 Dividend1에게 전부 몰아주고, 10,000원 보다 큰 경우에는 5:3:2 비율로 나누고 싶다는 필요성이 생겼다고 생각해보자. 
 
+조건문을 사용하지 않는다면 두 개의 프로그램을 만들어서 상황에 따라 프로그램을 선택하여 실행해야 할 것이다. 하지만 조건문을 사용함으로써 프로그램이 알아서 자신의 상황을 판단해 동작하기 때문에 프로그램을 제작자도 편리하고, 사용자도 프로그램에 대한 이해없이 쉽게 사용이 가능하다.
+
+```java
+public class AccountingIFApp {
+    public static void main(String[] args) {
+ 
+        double valueOfSupply = Double.parseDouble(args[0]);
+        double vatRate = 0.1;
+        double expenseRate = 0.3;
+        double vat = valueOfSupply * vatRate;
+        double total = valueOfSupply + vat;
+        double expense = valueOfSupply * expenseRate;
+        double income = valueOfSupply - expense;
+         
+        double dividend1;
+        double dividend2;
+        double dividend3;
+         
+        if(income > 10000.0) {
+            dividend1 = income * 0.5;
+            dividend2 = income * 0.3;
+            dividend3 = income * 0.2;
+        } else {
+            dividend1 = income * 1.0;
+            dividend2 = income * 0;
+            dividend3 = income * 0;
+        }
+ 
+        System.out.println("Value of supply : " + valueOfSupply);
+        System.out.println("VAT : " + vat);
+        System.out.println("Total : " + total);
+        System.out.println("Expense : " + expense);
+        System.out.println("Income : " + income);
+        System.out.println("Dividend 1 : " + dividend1);
+        System.out.println("Dividend 2 : " + dividend2);
+        System.out.println("Dividend 3 : " + dividend3);
+ 
+    }
+}
+```
+
+
+
+다시 조건문을 사용하기 이전의 AccountingApp 클래스를 가지고 배열을 배워보려 한다. 
+
+수익을 나누는 비율인 5:3:2를 rate1, rate2, rate3이라는 변수로 선언하여 사용할 수 있다. 하지만 비율 선언문과 호출문 사이에 많은 코드들이 쌓이게 되면 중간에 데이터가 변할 가능성도 있고, 쉽게 알아보지 못하는 불편함도 생긴다. 이로 인해 배열 이용의 필요성이 생긴다.
+
+배열은 `[]`를 사용해 선언한다. 배열을 도입함으로써 각각의 값들이 연관되어 있다는 것을 한 눈에 알 수 있고, 한 줄의 변수 선언문만을 필요로 하기 때문에 오염될 가능성을 현저히 줄일 수 있게 되었다.
+
+```java
+public class AccountingArrayApp {
+    public static void main(String[] args) {
+ 
+        double valueOfSupply = Double.parseDouble(args[0]);
+        double vatRate = 0.1;
+        double expenseRate = 0.3;
+        double vat = valueOfSupply * vatRate;
+        double total = valueOfSupply + vat;
+        double expense = valueOfSupply * expenseRate;
+        double income = valueOfSupply - expense;
+         
+        double[] dividendRates = new double[3];
+        dividendRates[0] = 0.5;
+        dividendRates[1] = 0.3;
+        dividendRates[2] = 0.2;
+         
+        double dividend1 = income * dividendRates[0];
+        double dividend2 = income * dividendRates[1];
+        double dividend3 = income * dividendRates[2];
+ 
+        System.out.println("Value of supply : " + valueOfSupply);
+        System.out.println("VAT : " + vat);
+        System.out.println("Total : " + total);
+        System.out.println("Expense : " + expense);
+        System.out.println("Income : " + income);
+        System.out.println("Dividend 1 : " + dividend1);
+        System.out.println("Dividend 2 : " + dividend2);
+        System.out.println("Dividend 3 : " + dividend3);
+    }
+}
+```
+
+
+
+배열과 반복문은 같이 사용하게 되면 엄청난 시너지 효과를 내게 된다. 따라서 반복문을 공부해보려 한다.
+
+현재 수익의 분배를 셋이서 하고 있으나, 셋보다 훨씬 많은 사람들과 수익이 분배할 필요가 있다고 상상해보자.
+
+그렇다면 엄청나게 많은 코드가 생겨나게 된다. 만약 코드에 오류가 발생한다면 수많은 코드를 확인해야 할 것이다. 하지만 반복되는 작업들을 반복문을 사용해 하나의 코드로 작성한다면 오류의 가능성은 줄고, 오류 수정은 더욱 용이해질 것이다.
+
+```java
+public class AccountingArrayLoopApp {
+    public static void main(String[] args) {
+ 
+        double valueOfSupply = Double.parseDouble(args[0]);
+        double vatRate = 0.1;
+        double expenseRate = 0.3;
+        double vat = valueOfSupply * vatRate;
+        double total = valueOfSupply + vat;
+        double expense = valueOfSupply * expenseRate;
+        double income = valueOfSupply - expense;
+         
+         
+ 
+        System.out.println("Value of supply : " + valueOfSupply);
+        System.out.println("VAT : " + vat);
+        System.out.println("Total : " + total);
+        System.out.println("Expense : " + expense);
+        System.out.println("Income : " + income);
+         
+        double[] dividendRates = new double[3];
+        dividendRates[0] = 0.5;
+        dividendRates[1] = 0.3;
+        dividendRates[2] = 0.2;
+         
+             
+        int i = 0;
+        while(i < dividendRates.length) {
+            System.out.println("Dividend : " + (income*dividendRates[i]) );
+            i = i + 1;
+        }
+    }
+}
+```
+
+
+
+이제 메소드를 AccountingApp 클래스에 도입하면서 공부해보자. 메소드는 서로 연관된 코드를 그룹화하여 이름을 붙인 정리정돈의 상자이다.
+
+메소드에 매개변수를 작성하지 않고 사용하기 위해서는 지역변수로 선언된 변수를 전역변수로 지정해서, 모든 메소드에서 접근할 수 있도록 할 수 있다.
+
+```java
+public class AccountingMethodApp {
+    public static double valueOfSupply;
+    public static double vatRate;
+    public static double expenseRate;
+    public static void main(String[] args) {
+        valueOfSupply = 10000.0;
+        vatRate = 0.1;
+        expenseRate = 0.3;
+        print();
+    }
+    
+    public static void print() {
+        System.out.println("Value of supply : " + valueOfSupply);
+        System.out.println("VAT : " + getVAT());
+        System.out.println("Total : " + getTotal());
+        System.out.println("Expense : " + getExpense());
+        System.out.println("Income : " + getIncome());
+        System.out.println("Dividend 1 : " + getDiviend1());
+        System.out.println("Dividend 2 : " + getDiviend2());
+        System.out.println("Dividend 3 : " + getDiviend3());
+    }
+    
+    public static double getDiviend1() {return getIncome() * 0.5;}
+    public static double getDiviend2() {return getIncome() * 0.3;}
+    public static double getDiviend3() {return getIncome() * 0.2;}
+    public static double getIncome() {return valueOfSupply - getExpense();}
+    public static double getExpense() {return valueOfSupply * expenseRate;}
+    public static double getTotal() {return valueOfSupply + getVAT();} 
+    public static double getVAT() {return valueOfSupply * vatRate;}
+}
+```
+
+
+
+클래스는 서로 연관된 변수와 메소드를 그룹화하여 이름을 붙인 또 다른 정리정돈의 상자이다. 우리가 소프트웨어를 만드는 것에 있어서 메소드와 클래스가 구조를 결정하기 때문에 중요한 것이다.
+
+Accounting 클래스를 생성하여, 변수들과 메소드를 Accounting 클래스 멤버로 이동시켰다. 그리고 기존 클래스에서 Accounting 클래스를 호출하면, Accounting 클래스에 소속된 변수들과 메소드를 이용할 수 있게 된다. 그리고 `.`을 찍어 구분함으로써, 같은 이름에 변수나 메소드가 선언되어도 구분지어 사용할 수 있다. 이것이 바로 객체지향의 핵심이라고 할 수 있는 클래스이다.
+
+```java
+class Accounting{
+    public static double valueOfSupply;
+    public static double vatRate;
+    public static double expenseRate;
+    public static void print() {
+        System.out.println("Value of supply : " + valueOfSupply);
+        System.out.println("VAT : " + getVAT());
+        System.out.println("Total : " + getTotal());
+        System.out.println("Expense : " + getExpense());
+        System.out.println("Income : " + getIncome());
+        System.out.println("Dividend 1 : " + getDiviend1());
+        System.out.println("Dividend 2 : " + getDiviend2());
+        System.out.println("Dividend 3 : " + getDiviend3());
+    }
+    
+    public static double getDiviend1() {return getIncome() * 0.5;}
+    public static double getDiviend2() {return getIncome() * 0.3;}
+    public static double getDiviend3() {return getIncome() * 0.2;}
+    public static double getIncome() {return valueOfSupply - getExpense();}
+    public static double getExpense() {return valueOfSupply * expenseRate;}
+    public static double getTotal() {return valueOfSupply + getVAT();} 
+    public static double getVAT() {return valueOfSupply * vatRate;}
+}
+
+public class AccountingClassApp {  
+    public static void main(String[] args) {
+        Accounting.valueOfSupply = 10000.0;
+        Accounting.vatRate = 0.1;
+        Accounting.expenseRate = 0.3;
+        Accounting.print();
+    }
+}
+```
+
+
+
+객체지향의 양대산맥은 클래스와 인스턴스이다. 인스턴스는 하나의 클래스를 복제해서 서로 다른 데이터의 값과 서로 같은 메소드를 가진 복제본을 만드는 것이다. 
+
+Accounting 클래스의 복제본인 인스턴스를 a1과 a2로 복제하였다. 그리고 서로 다른 데이터 값을 부여하였고, 서로 같은 메소드를 이용하였다.
+
+```java
+class Accounting{
+    public double valueOfSupply;
+    public double vatRate;
+    public double expenseRate;
+    public static void print() {
+        System.out.println("Value of supply : " + valueOfSupply);
+        System.out.println("VAT : " + getVAT());
+        System.out.println("Total : " + getTotal());
+        System.out.println("Expense : " + getExpense());
+        System.out.println("Income : " + getIncome());
+        System.out.println("Dividend 1 : " + getDiviend1());
+        System.out.println("Dividend 2 : " + getDiviend2());
+        System.out.println("Dividend 3 : " + getDiviend3());
+    }
+    
+    public static double getDiviend1() {return getIncome() * 0.5;}
+    public static double getDiviend2() {return getIncome() * 0.3;}
+    public static double getDiviend3() {return getIncome() * 0.2;}
+    public static double getIncome() {return valueOfSupply - getExpense();}
+    public static double getExpense() {return valueOfSupply * expenseRate;}
+    public static double getTotal() {return valueOfSupply + getVAT();} 
+    public static double getVAT() {return valueOfSupply * vatRate;}
+}
+
+public class AccountingClassApp {   
+    public static void main(String[] args) {
+        // instance (a1)
+        Accounting a1 = new Accounting();
+        a1.valueOfSupply = 10000.0;
+        a1.vatRate = 0.1;
+        a1.expenseRate = 0.3;
+        a1.print();
+        
+        // instance (a2)
+        Accounting a2 = new Accounting();
+        a2.valueOfSupply = 20000.0;
+        a2.vatRate = 0.05;
+        a2.expenseRate = 0.2;
+        a2.print();
+         
+        a1.print();
+    }
+}
+```
