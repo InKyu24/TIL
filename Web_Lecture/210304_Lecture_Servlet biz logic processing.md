@@ -24,6 +24,8 @@
 
 서블릿에서 데이터베이스와 연동하는 과정은 자바의 데이터베이스 연동 과정과 같다. 클라이언트로부터 요청을 받으면 서블릿은 SQL문을 사용해 데이터베이스에 접근하여 작업을 한다. 이 과정에서 DAO와 VO 클래스가 사용된다. DAO 클래스와 VO 클래스가 연동해서 데이터베이스에 접근하게 된다.
 
+
+
 ### 서블릿으로 데이터베이스 내 회원정보 조회 (Web13 프로젝트 참고)
 
 1. 웹 브라우저가 서블릿에게 정보를 요청한다.
@@ -54,7 +56,7 @@
 
 
 
-JNDI
+### JNDI
 
 실제 웹 애플리케이션에서 커넥션풀 객체를 구현할 때는 Java SE에서 제공하는 javax.sql.DataSource 클래스를 이용한다. 그리고 웹 애플리케이션 실행 시 톰캣이 만들어 놓은 커넥션풀 객체에 접근할 때는 JNDI를 이용한다.
 
@@ -75,9 +77,29 @@ JNDI 사용 예는 아래와 같다.
 실제 웹 애플리케이션에서 톰캣이 제공하는 커넥션풀 객체를 이용해 데이터베이스와 연동하는 과정은 아래와 같다.
 
 1. JDBC 드라이버를 `WEB-INF/lib`에 설치한다.
+
 2. 커넥션풀 기능 관련 jar 파일(`tomcat-dbcp`)을 `WEB-INF/lib`에 설치한다.
+
 3. `CATALINA_HOME/context.xml`에 커넥션 객체 생성 시 연결할 데이터베이스 정보를 JNDI로 설정한다.
+
+   ```xml
+   <Context>
+   	<Resource
+       	name="jdbc/oracle"
+       	auth="Container"
+       	type="javax.sql.DataSource"
+       	driverClassName="oracle.jdbc.OracleDriver"
+       	url="jdbc:oracle:thin:@localhost:1521:xe"
+       	username="CAFE"
+       	password="1313" />
+   </Context>
+   ```
+
 4. DAO 클래스에서 데이터베이스와 연동 시 미리 설정한 JNDI라는 이름으로 데이터베이스와 연결해서 작업한다.
 
-실제 톰캣에서 커넥션풀 기능을 사용하기 위해서는, 이 기능을 제공하는 DBCP 라이브러리를 따로 받아야 한다. 이 라이브러리 파일은 jar 압축 파일 형태로 제공된다.
+실제 톰캣에서 커넥션풀 기능을 사용하기 위해서는, 이 기능을 제공하는 DBCP(DataBase Connection Pool) 라이브러리를 따로 받아야 한다. 이 라이브러리 파일은 jar 압축 파일 형태로 제공된다.
+
+
+
+### 커넥션풀을 이용해 데이터베이스 내 회원정보 조회 (Web13 프로젝트 참고)
 
