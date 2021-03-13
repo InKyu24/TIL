@@ -255,13 +255,13 @@ http://localhost:8080/SayHello/servlet/web.controller.FormProcessingServlet
 
 14. 다음 중 Session에 대한 설명으로 틀린 것은?
 
-    1) 서버에 사용자의 정보를 유지 관리한다.ㅇ
+    1) 서버에 사용자의 정보를 유지 관리한다.
 
-    2) 사용자 인증 후 여러 페이지에 걸쳐 정보를 공유하여 사용 할 수 있게 해준다.ㅇ
+    2) 사용자 인증 후 여러 페이지에 걸쳐 정보를 공유하여 사용 할 수 있게 해준다.
 
     ***<u>3) 사용자가 정해준 옵션에 의해서 사용가능 여부가 결정된다.</u>***
 
-    4) 객체형을 포함한 어떠한 형태의 데이터도 저장 가능 하다.ㅇ
+    4) 객체형을 포함한 어떠한 형태의 데이터도 저장 가능 하다.
 
     > 세션 : 웹 사이트의 여러 페이지에 걸쳐 사용되는 사용자 정보를 저장하는 방법
     >
@@ -375,9 +375,11 @@ http://localhost:8080/SayHello/servlet/web.controller.FormProcessingServlet
 
     3) SpringBootServletInitializer는 web.xml없이 톰캣에서 실행하게 해주는 역할을 한다.
 
-    4) 웹  프로그램이므로 main 메소드는 필요하지 않다.
+    ***<u>4) 웹  프로그램이므로 main 메소드는 필요하지 않다.</u>***
 
-    
+    > 해당 클래스 명이 아니더라도 @SpringBootApplication 어노테이션이 있는 클래스의 main 메소드가 실행된다. 
+    >
+    > web.xml이 없는 SpringBoot 웹 애플리케이션을 외부 Tomcat에서 동작하도록 하기 위해서는 WebApplicationInitializer 인터페이스를 구현한 SpringBootServletInitializer를 상속을 받는 것이 필요하다.
 
 21. 다음 중  Servlet의 장점이 아닌 것은?
 
@@ -407,15 +409,23 @@ http://localhost:8080/SayHello/servlet/web.controller.FormProcessingServlet
 
     
 
-23. 기존의  HttpSession을 얻기 위한 방법으로 맞는 것은? (보기의 request는 HttpServletRequest 객체임)
+23. 기존의 HttpSession을 얻기 위한 방법으로 맞는 것은? (보기의 request는 HttpServletRequest 객체임)
 
     1) HttpSession  session=new HttpSession();
 
-    2) HttpSession  session=request.getSession(false);
+    ***<u>2) HttpSession  session=request.getSession(false);</u>***
 
     3) HttpSession  session=HttpSession.getInstance();
 
     4) HttpSession  session=request.getSession();
+
+    > getSession(), getSession(true) : HttpSession이 존재하면 현재 HttpSession을 반환하고 존재하지 않으면 새로이 세션을 생성
+    >
+    > getSession(false) : HttpSession이 존재하면 현재 HttpSession을 반환하고 존재하지 않으면 새로이 생성하지 않고 그냥 null을 반환
+    >
+    > 
+    >
+    > [참고] getSession(), getSession(true)는 null 체크없이 바로 getAttribute()를 사용해도 무방하지만, getSession(false)는 null을 리턴할수 있기 때문에 null체크를 해야 한다.
 
     
 
@@ -449,10 +459,18 @@ http://localhost:8080/SayHello/servlet/web.controller.FormProcessingServlet
     }
     ```
 
-    1) `http://localhost:8080`
+    ***<u>1) `http://localhost:8080`</u>***
 
     2) `http://localhost:8080/home`
 
     3) `http://localhost:8080/DemoController`
 
     4) `http://localhost:8080/DemoController/home`
+    
+    > @Controller 애너테이션은 해당 클래스가 Controller임을 나타낸다.
+    >
+    > @RequestMapping은 url과 함께 애너테이션을 하고, 어떤 Controller 또는 어떤 Method가 request를 처리할 지를 맵핑한다.
+    >
+    > 메서드 내에서 viewName을 별도로 설정하지 않고 @RequestMapping을 하게 되면, path로 설정한 URL이 그대로 viewName으로 설정된다.
+    >
+    >  @ResponseBody가 메서드에서 부여되면 메서드가 리턴하는 오브젝트는 메시지 컨버터를 통해 바로 HTTP Response Body에 직접 쓰여진다. 
