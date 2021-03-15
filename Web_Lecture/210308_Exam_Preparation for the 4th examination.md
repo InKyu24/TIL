@@ -93,7 +93,7 @@
 
 6. 다음 중  HTTP 1.1프로토콜에 의해 제공되는 GET 메서드에 대한 설명으로 옳은 것은?
 
-   ***<u>1) 전송할 데이터를  헤더의 URL의 뒤에 붙여서 전송한다.</u>***
+   ***<u>1) 전송할 데이터를 헤더의 URL의 뒤에 붙여서 전송한다.</u>***
 
    2) 전송할 데이터를 바디부분에 스트림의 형태로 전송한다.
 
@@ -300,7 +300,7 @@ http://localhost:8080/SayHello/servlet/web.controller.FormProcessingServlet
 
 16. 같은 Servlet class에 대한 요청을 처리하는 모든 thread는 같은 Servlet 객체를 공유한다. 그래서  동시성문제(Concurrency Issue)가 발생할 수 있는데, 다음 중에서 동시성 문제를 발생시키지 않는 것은?
 
-    1) Local Variable
+    ***<u>1) Local Variable</u>***
 
     2) Instance Variable
 
