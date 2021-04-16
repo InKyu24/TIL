@@ -5,7 +5,8 @@
 ```bash
 date
 
-sudo rm /etc/localtimesudo ln -s -f  /usr/share/zoneinfo/Asia/Seoul /etc/localtime
+sudo rm /etc/localtime
+sudo ln -s -f  /usr/share/zoneinfo/Asia/Seoul /etc/localtime
 
 date
 ```
