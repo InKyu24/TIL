@@ -28,8 +28,6 @@ Today I Learned
 
   > Google 내 Github Pages 검색 후 활용
 
-+ Git Branch 활용한 협업 연습 및 실제 프로젝트에 적용해보기
-
 + 번역 및 문서화 등을 통한 Open Source Contribution
 
 
@@ -38,3 +36,5 @@ Today I Learned
 
 + [생활코딩](https://opentutorials.org/course/3930)에서 Java1 강의 듣기 (완료)
 + [생활코딩](https://opentutorials.org/course/3838)에서 Git1 강의 듣기 (완료)
++ [K-Digital] 온·오프 연계 AI활용 지능형 서비스 개발(A반_1회차) 수강 (완료)
++ Git Branch 활용한 협업 연습 및 실제 프로젝트에 적용해보기 (완료)
