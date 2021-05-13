@@ -7,13 +7,18 @@ Today I Learned
 ## 나의 목표
 
 + 매일 수강한 내용 정리하기 (TIL 이어나가기)
+
 + [Edx(MOOC)](https://www.youtube.com/watch?v=YoXxevp1WRQ&list=PLhQjrBD2T382_R182iC2gNZI9HzWFMC_8)에서 CS50 강의 듣기 (0/13)
+
++ [생활코딩](https://opentutorials.org/module/4058)에서 React 강의 듣기
+
 + 생활코딩 Java
 
   + [생활코딩](https://opentutorials.org/course/3975)에서 Java-제어문 강의 듣기
   + [생활코딩](https://opentutorials.org/course/4024)에서 Java-method 강의 듣기
   + [생활코딩](https://opentutorials.org/course/4074)에서 Java 객체지향 프로그래밍 강의 듣기
   + [생활코딩](https://opentutorials.org/course/4408)에서 Java-상속 강의 듣기
+  
 + 생활코딩 Git
   + [생활코딩](https://opentutorials.org/course/3839)에서 Git CLI - 버전관리 강의 듣기
   + [생활코딩](https://opentutorials.org/course/3840)에서 Git CLI - Branch&Conflict 강의 듣기
@@ -21,7 +26,9 @@ Today I Learned
   + [생활코딩](https://opentutorials.org/course/3842)에서 Git CLI - 협업 강의 듣기
   + [생활코딩](https://opentutorials.org/course/3843)에서 Git CLI - Cherry-pick & rebase 강의 듣기
   + [생활코딩](https://opentutorials.org/course/3844)에서 Git CLI - github.com Pull request 강의 듣기
+  
 + [Codecademy](https://www.codecademy.com/learn/learn-java)에서 Java 배우기 (0/15)
+
 + [Udacity](https://www.youtube.com/playlist?list=PLAwxTw4SYaPk8_-6IGxJtD3i2QAu5_s_p)에서 Git 강의 듣기 (0/107)
 
 + Git Pages로 개인 페이지 만들기
