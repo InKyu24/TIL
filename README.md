@@ -10,7 +10,9 @@ Today I Learned
 
 + [Edx(MOOC)](https://www.youtube.com/watch?v=YoXxevp1WRQ&list=PLhQjrBD2T382_R182iC2gNZI9HzWFMC_8)에서 CS50 강의 듣기 (0/13)
 
-+ [생활코딩](https://opentutorials.org/module/4058)에서 React 강의 듣기
++ [생활코딩](https://opentutorials.org/module/4058)에서 React 초급 강의 듣기
+
++ [생활코딩](https://opentutorials.org/module/4600)에서 React 중급 강의 듣기
 
 + 생활코딩 Java
 
