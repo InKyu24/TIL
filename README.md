@@ -6,9 +6,7 @@ Today I Learned
 
 ## 나의 목표
 
-+ 매일 수강한 내용 정리하기 (TIL 이어나가기)
-
-+ [Edx(MOOC)](https://www.youtube.com/watch?v=YoXxevp1WRQ&list=PLhQjrBD2T382_R182iC2gNZI9HzWFMC_8)에서 CS50 강의 듣기 (0/13)
++ [Edx(MOOC)](https://www.youtube.com/watch?v=YoXxevp1WRQ&list=PLhQjrBD2T382_R182iC2gNZI9HzWFMC_8)에서 CS50 강의 듣기 (1/13)
 
 + [생활코딩](https://opentutorials.org/module/4058)에서 React 초급 강의 듣기
 
