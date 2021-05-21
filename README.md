@@ -8,9 +8,9 @@ Today I Learned
 
 + [Edx(MOOC)](https://www.youtube.com/watch?v=YoXxevp1WRQ&list=PLhQjrBD2T382_R182iC2gNZI9HzWFMC_8)에서 CS50 강의 듣기 (1/13)
 
-+ [생활코딩](https://opentutorials.org/module/4058)에서 React 초급 강의 듣기
++ 생활코딩 React
 
-+ [생활코딩](https://opentutorials.org/module/4600)에서 React 중급 강의 듣기
+  + [생활코딩](https://opentutorials.org/module/4600)에서 React 중급 강의 듣기
 
 + 생활코딩 Java
 
@@ -45,3 +45,4 @@ Today I Learned
 + [생활코딩](https://opentutorials.org/course/3838)에서 Git1 강의 듣기 (완료)
 + [K-Digital] 온·오프 연계 AI활용 지능형 서비스 개발(A반_1회차) 수강 (완료)
 + Git Branch 활용한 협업 연습 및 실제 프로젝트에 적용해보기 (완료)
++ [생활코딩](https://opentutorials.org/module/4058)에서 React 초급 강의 듣기 (완료)
