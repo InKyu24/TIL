@@ -192,15 +192,17 @@ function App() {
 }
 
 function FuncComp(functionalprops){
-  var numberState = useState(functionalprops.initNumber);
-  console.log("numberState", numberState);
-  var number = numberState[0];
-  var setNumber = numberState[1];
+  // var numberState = useState(functionalprops.initNumber);
+  // console.log("numberState", numberState);
+  // var number = numberState[0];
+  // var setNumber = numberState[1];
+  var [number, setNumber] = useState(functionalprops.initNumber);
 
-  var dateState = useState(new Date().toString());
-  console.log("dateState", dateState);
-  var date = dateState[0];
-  var setDate = dateState[1];
+  // var dateState = useState(new Date().toString());
+  // console.log("dateState", dateState);
+  // var date = dateState[0];
+  // var setDate = dateState[1];
+  var [date, setDate] = useState(new Date().toString());
 
   return (
     <div className="container">
@@ -249,5 +251,5 @@ class ClassComp extends React.Component{
 }
 
 export default App;
-```
 
+```
