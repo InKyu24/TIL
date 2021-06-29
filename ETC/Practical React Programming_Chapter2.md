@@ -834,3 +834,705 @@ requestData1()
 
 지금은 이 코드를 이해하지 못해도 괜찮다. 프로미스를 사용하면 비동기 프로그래밍을 할 때 코드를 순차적으로 작성할 수 있다는 사실만 기억해두자.
 
+###### 프로미스의 세 가지 상태
+
+프로미스는 다음 세 가지 상태 중 하나의 상태로 존재한다.
+
++ 대기 중(pending): 결과를 기다리는 중
++ 이행됨(fulfilled): 수행이 정상적으로 끝났고 결과값을 갖고 있음
++ 거부됨(rejected): 수행이 비정상적으로 끝났음
+
+여기서 이행됨, 거부됨 상태를 처리됨(settled) 상태라고 부른다. 프로미스는 처리됨 상태가 되면 더 이상 다른 상태로 변경되지 않는다. 대기 중 상태일 때만 이행됨 또는 거부됨 상태로 변할 수 있다.
+
+###### 프로미스를 생성하는 방법
+
+프로미스는 다음 세 가지 방식으로 생성할 수 있다.
+
+```javascript
+const p1 = new Promise((resolve, reject) => {
+    // ...
+    // resolve(data)
+    // or reject('error message')
+});
+
+const p2 = Promise.reject('error message');
+
+const p3 = Promise.resolve(param);
+```
+
+일반적으로 new 키워드를 사용해서 프로미스를 생성한다. 이 방법으로 생성된 프로미스는 대기 중 상태가 된다. 생성자에 입력되는 함수는 resolve와 reject라는 콜백 함수를 매개변수로 갖는다. 비동기로 어떤 작업을 수행 후 성공했을 때 resolve를 호출하고, 실패했을 때 reject를 호출하면 된다. resolve를 호출하면 p1 객체는 이행됨 상태가 된다.  반대로 reject를 호출하면 거부됨 상태가 된다. new 키워드를 사용해서 프로미스를 생성하는 순간 생성자의 입력 함수가 실행된다. 만약 API 요청을 보내는 비동기 코드가 있다면 프로미스가 생성되는 순간에 요청을 보낸다.
+
+new 키워드를 사용하지 않고 Promise.reject를 호출하면 거부됨 상태인 프로미스가 생성된다.
+
+Promise.resolve를 호출해도 프로미스가 생성된다. 만약 입력값이 프로미스였다면 그 객체가 그대로 반환되고, 프로미스가 아니라면 이행됨 상태인 프로미스가 반환된다.
+
+다음은 Promise.resolve의 인수가 프로미스인 경우와 아닌 경우의 반환값을 보여 준다.
+
+```javascript
+const p1 = Promise.resolve(123);
+console.log(p1 !== 123); // true
+
+const p2 = new Promise(resolve => setTimeout(() => resolve(10) 1));
+console.log(Promise.resolve(p2) === p2); // true
+```
+
+프로미스가 아닌 인수와 함께 Promise.resolve 함수를 호출하면 그 값 그대로 이행됨 상태인 프로미스가 반환된다. p1은 123을 데이터로 가진 프로미스다. Promise.resolve 함수에 프로미스가 입력되면 그 자신이 반환된다.
+
+###### 프로미스 이용하기 1: then
+
+then은 처리됨 상태가 된 프로미스를처리할 때 사용되는 메서드다. 프로미스가 처리됨 상태가 되면 then 메서드의 인수로 전달된 함수가 호출된다. 다음은 then 메서드의 사용법을 보여주는 코드다.
+
+```javascript
+requestData().then(onResolve, onReject);
+Promise.resolve(123).then(data => console.log(data)); // 123
+Promise.reject('err').then(null, error => console.log(error)); // 에러 발생
+```
+
+프로미스가 처리됨 상태가 되면 onResolve 함수가 호출되고, 거부됨 상태가 되면 onReject 함수가 호출된다.
+
+then 메서드는 항상 프로미스를 반환한다. 따라서 하나의 프로미스로부터 연속적으로 then 메서드를 호출할 수 있다.
+
+```javascript
+requestData1()
+	.then(data => {
+    	console.log(data);
+    	return requestData2();
+	})
+	.then(data => {
+    	return data + 1;
+	})
+	.then(data =>{
+    	throw new Error('some error');
+	})
+	.then(null, error => {
+    	console.log(error);
+	})
+```
+
+onResolve 또는 onReject 함수에서 프로미스를 반환하면 then 메서드는 그 값을 그대로 반환한다. 만약 프로미스가 아닌 값을 반환하면 then 메서드는 이행됨 상태인 프로미스를 반환한다.  onResolve 또는 onReject 함수 내부에서 예외가 발생하면 then 메서드는 거부됨 상태인 프로미스를 반환한다. 결괒거으로 then 메서드는 항상 프로미스를 반환한다.
+
+프로미스가 거부됨 상태인 경우에는 onReject 함수가 존재하는 then을 만날 때까지 이동한다.
+
+```javascript
+Promise.reject('err')
+	.then(() => console.log('then 1'))
+	.then(() => console.log('then 2'))
+	.then(() => console.log('then 3'), () => console.log('then 4'))
+	.then(() => console.log('then 5'), () => console.log('then 6'));
+```
+
+거부됨 상태인 프로미스는 처음으로 만나는 onReject 함수를 호출하므로 `.then(() => console.log('then 1'))` 코드와 `.then(() => console.log('then 2'))` 코드는 생략되고, `.then(() => console.log('then 3'), () => console.log('then 4'))` 코드가 실행되면서 'then 4'가 출력된다. then 메서드의 가장 중요한 특징은 항상 연결된 순서대로 호출된다는 점이다. 이 특징은 프로미스로 비동기 프로그래밍을 할 때 동기 프로그래밍 방식으로 코드를 작성할 수 있게 해준다.
+
+###### 프로미스 이용하기 2: catch
+
+catch는 프로미스 수행 중 발생한 예외를 처리하는 메서드다. catch 메서드는 then 메서드의 onReject 함수와 같은 역할을 한다.
+
+다음은 동일한 기능을 then 메서드와 catch 메서드로 각각 구현한 코드이다.
+
+```javascript
+Promise.reject(1).then(null, error => {
+	console.log(error);
+});
+
+Promise.reject(1).catch(error => {
+    console.log(error);
+});
+```
+
+예외 처리는 then 메서드의 onReject 함수보다는 catch 메서드를 이용하는 게 가독성 면에서 더 좋다.
+
+다음은 onReject 함수에서 예외를 처리할 때 발생하는 문제를 보여준다.
+
+```javascript
+Promise.resolve()
+    .then(() => {
+    	throw new Error('some error');
+	},
+	error => {
+        console.log('error');
+    },
+);
+```
+
+then 메서드의 onResolve 함수에서 발생한 예외는 같은 then 메서드의 onReject 함수에서 처리되지 않는다. 위 코드를 실행하면 Unhandled promise rejection 에러가 발생한다. 거부됨 상태인 프로미스를 처리하지 않았기 때문이다. 코드를 다음과 같이 수정하면 이 문제는 해결된다.
+
+```javascript
+Promise.resolve()
+	.then(() => {
+		throw new Error('some error');
+	})
+	.catch(error => {
+    	console.log(error);
+	});
+```
+
+프로미스에서 예외 처리를 할 때는 then 메서드의 onReject 함수보다는 좀 더 직관적인 catch 메서드를 이용할 것을 추천한다.
+
+then 메서드와 마찬가지로 catch 메서드도 새로운 프로미스를 반환한다. 따라서 다음처럼 catch 메서드 이후에도 계속해서 then 메서드를 사용할 수 있다.
+
+```javascript
+Promise.reject(10)
+	.then(data => {
+		console.log('then1:', data);
+    	return 20;
+	})
+	.catch(error => {
+    	console.log('catch:', error)
+    	return 30;
+	})
+	.then(data => {
+    	console.log('then2:', data);
+	});
+
+// catch: 10
+// then2: 30
+```
+
+###### 프로미스 이용하기 3: finally
+
+finally는 프로미스가 이행됨 또는 거부됨 상태일 때 호출되는 메서드다. 이 메서드는 2018년에 자바스크립트 표준으로 채택됐다. finally 메서드는 다음과 같이 프로미스 체인의 가장 마지막에 사용된다.
+
+```javascript
+requestData()
+	.then(data => {
+    	// ...
+	})
+	.catch(error => {
+    	// ...
+	})
+	.finally(() => {
+    	// ...
+	});
+```
+
+finally 메서드는 .then(onFinally, onFinally) 코드와 유사하지만, 이전에 사용된 프로미스를 그대로 반환한다는 점이 다르다. 따라서 처리됨 상태인 프로미스의 데이터를 건드리지 않고 추가 작업을 할 때 유용하게 사용될 수 있다. 다음은 데이터 요청의 성공, 실패 여부와 상관없이 서버에 로그를 보낼 때 finally 메서드를 사용한 코드다.
+
+```javascript
+function requestData() {
+    return fetch()
+    	.catch(error => {
+        	// ...
+    	})
+    	.finally(() => {
+        	sendLogToServer('requestData funished');
+    	});
+}
+requestData().then(data => console.log(data));
+```
+
+requestData 함수의 반환값은 finally 메서드 호출 이전의 프로미스다. 따라서 requestData 함수를 사용하는 입장에서는 finally 메서드의 존재 여부를 신경쓰지 않아도 된다.
+
+##### 4-2. 프로미스 활용하기
+
+###### 병렬로 처리하기: Promise.all
+
+Promise.all은 여러 개의 프로미스를 병렬로 처리할 때 사용하는 함수다. then 메서드를 체인으로 연결하면 각각의 비동기 처리가 병렬로 처리되지 않는다는 단점이 있다.
+
+다음과 같이 여러 개의 비동기 함수를 then 메서드로 연결하면 순차적으로 실행된다.
+
+```javascript
+requestData1()
+	.then(data => {
+    	console.log(data);
+    	return requestData2();
+	})
+	.then(data => {
+    	console.log(data);
+	});
+```
+
+비동기 함수 간에 서로 의존성이 없다면 병렬로 처리하는 게 더 빠르다. then 메서드를 체인으로 연결하지 않고 다음과 같이 비동기 함수를 각각 호출하면 병렬로 처리된다.
+
+```javascript
+requestData1().then(data => console.log(data));
+requestData2().then(data => console.log(data));
+```
+
+위 코드에서 requestData1, requestData2 두 함수는 동시에 실행된다. 이렇게 여러 프로미스를 병렬로 처리하고 싶은 경우에 다음과 같이 Promise.all을 사용할 수 있다.
+
+```javascript
+Promise.all([requestData1(), requestData2()]).then(([data1, data2]) => {
+    console.log(data1, data2);
+});
+```
+
+Promise.all 함수는 프로미스를 반환한다. Promise.all 함수가 반환하는 프로미스는 입력된 모든 프로미스가 처리도미 상태가 되어야 마찬가지로 처리됨 상태가 된다. 만약 하나라도 거부됨 상태가 된다면 Promise.all 함수가 반환하는 프로미스도 거부됨 상태가 된다.
+
+###### 가장 빨리 처리된 프로미스 가져오기: Promise.race
+
+promise.race는 여러 개의 프로미스 중에서 갖아 빨리 처리된 프로미스를 반환하는 함수다. Promise.race 함수에 입력된 여러 프로미스 중에서 하나라도 처리됨 상태가 되면, Promise.race 함수가 반한하는 프로미스도 처리됨 상태가 된다.
+
+다음 코드는 Promise.race 함수의 사용법을 보여 준다.
+
+```javascript
+Promise.race([
+    requestData(),
+    new Promise((_, reject) => setTimeout(reject, 3000)),
+])
+	.then(data => console.log(data))
+	.catch(error => console.log(error));
+```
+
+requestData 함수가 3초 안에 데이터를 받으면 then 메서드가 호출되고, 그렇지 않으면 catch 메서드가 호출된다.
+
+###### 프로미스를 이용한 데이터 캐싱
+
+처리됨 상태가 되면 그 상태를 유지하는 프로미스의 성질을 이용해서 데이터를 캐싱할 수 있다. 다음은 프로미스를 이용해서 데이터를 캐싱하는 코드다.
+
+```javascript
+let cachedPromise;
+function getData() {
+    cachedPromise = cachedPromise || requestData();
+    return cachedPromise;
+}
+getData().then(v => console.log(v));
+getData().then(v => console.log(v));
+```
+
+getData 함수를 처음 호출할 때만 requestData가 호출된다. 데이터를 가져오는 작업이 끝나면 그 결과는 cachedPromise 프로미스에 저장된다. 데이터를 가져오는 작업에 실패하는 경우가 고려되지 않았지만, 지금은 프로미스로 캐싱을 구현할 수도 있다는 점만 기억하기 바란다.
+
+##### 4-3. 프로미스 사용 시 주의할 점
+
+###### return 키워드 깜빡하지 않기
+
+then 메서드 내부 함수에서 return 키워드를 입력하는 것을 깜빡하기 쉽다. then 메서드가 반환하는 프로미스 객체의 데이터는 내부 함수가 반환한 값이다. return 키워드를 사용하지 않으면 프로미스 객체의 데이터는 undefined가 된다.
+
+다음 코드는 then 메서드 내부에서 return 키워드를 깜빡한 경우를 보여 준다.
+
+```javascript
+Promise.resolve(10)
+	.then(data => {
+    	console.log(data);
+    	Promise.resolve(20);
+	})
+	.then(data => {
+    	console.log(data);
+	});
+```
+
+###### 프로미스는 불변 객체라는 사실 명심하기
+
+프로미스는 불변 객체다. 이를 인지하지 못하고 코드를 작성하면 다과 같은 실수를 할 수 있다.
+
+```javascript
+function requestData() {
+    const p = Promise.resolve(10);
+    p.then(() => {
+        return 20;
+    })
+    return p;
+}
+requestData().then(v =>{
+    console.log(v); // 10
+});
+```
+
+첫 번째 then 메서드는 기존 객체를 수정하지 않고, 새로운 프로미스를 반환한다. console.log(v)에서 20이 출력되길 원한다면 requestData 함수를 다음과 같이 수정해야 한다.
+
+```javascript
+function requestData() {
+	return Promise.resolve(10).then(v => {
+        return 20;
+    });
+}
+```
+
+###### 프로미스를 중첩해서 사용하지 않기
+
+프로미스를 중첩해서 사용하면 콜백 패턴처럼 코드가 복잡해지므로 사용을 권하지 않는다. 프로미스를 사용하다 보면 무심결에 다음 코드와 같이 중첩해서 사용하기 쉽다.
+
+```javascript
+requestData1().then(result1 => {
+    requestData2(result1).then(result2 => {
+        // ...
+    });
+});
+```
+
+따라서 위와 같이 프로미스를 중첩하는 것보다는 아래와 같이 작성하는 것이 좋다.
+
+```javascript
+requestData1()
+	.then(result1 => {
+    	return requestData2(result1)
+	})
+	.then(result2 => {
+    	// ...
+	});
+```
+
+만약 `// ...` 부분에서 result1 변수를 참조해야 한다면 어떻게 해야 할까? Promise.all 함수를 사용하면 프로미스를 중첩하지 않고도 해결할 수 있다.
+
+```javascript
+requestData1()
+    .then(result1 => {
+        return Promise.all([result1, requestData2(result1)]);
+    })
+    .then(([result1, result2]) => {
+        // ...
+    });
+```
+
+Promise.all 함수로 입력하는 배열에 프로미스가 아닌 값을 넣으면, 그 값 그대로 이행됨 상태인 프로미스처럼 처리된다.
+
+###### 동기 코드의 예외 처리 신경 쓰기
+
+프로미스를 동기(sync) 코드와 같이 사용할 때는 예외 처리에 신경써야 한다. 다음과 같이 동기 함수에서 예외가 발생하는 경우에는 이 예외를 처리하는 곳이 없어서 문제가 된다.
+
+```javascript
+function requestData() {
+    doSync();
+    return fetch()
+    	.then(data => console.log(data))
+    	.catch(error => console.log(error));
+}
+```
+
+doSync 함수가 반드시 fetch 전에 호출되어야 하는 게 아니라면 다음과 같이 then 메서드 안쪽으로 넣어 주는 게 좋다.
+
+```javascript
+function requestData() {
+    return fetch()
+    	.then(data => {
+        	doSync();
+        	console.log(data);
+    })
+    .catch(error => console.log(error));
+}
+```
+
+이제 doSync에서 발생하는 예외는 catch 메서드에서 처리가 된다.
+
+#### 5. 향상된 비동기 프로그래밍 2: async await
+
+async await는 비동기 프로그래밍을 동기 프로그래밍처럼 작성할 수 있도록 함수에 추가된 기능이다. 프로미스가 자바스크립트 표준이 되고 2년 후에 async await도 자바스크립트 표준이 되었는데, async await를 이용해서 비동기 코드를 작성하면 프로미스의 then 메서드를 체인 형식으로 호출하는 것보다 가독성이 좋아진다. 그렇다고 async await가 프로미스를 완전히 대체하는 것은 아니다. 프로미스는 비동기 상태를 값으로 다룰 수 있기 때문에 async await보다 큰 개념이다.
+
+지금부터 async await의 개념을 알아보고 프로미스로 작성한 비동기 코드와 어떻게 다른지 비교해보자.
+
+##### 5-1. async await 이해하기
+
+###### async await 함수는 프로미스를 반환한다.
+
+프로미스는 객체로 존재하지만 async await는 함수에 적용되는 개념이다. 다음과 같이 async await 함수는 프로미스를 반환한다.
+
+```javascript
+async function getData() {
+    return 123;
+}
+getData().then(data => console.log(data)); // 123
+```
+
+async 키워드를 이용해서 정의된 함수는 async await 함수이며, 항상 프로미스를 반환한다. 따라서 함수 호출 호 then 메서드를 사용할 수 있다.
+
+async await 함수 내부에서 프로미스를 반환하는 경우를 살펴보자.
+
+```javascript
+async function getData() {
+    return Promise.resolve(123);
+}
+getData().then(data => console.log(data)); // 123
+```
+
+프로미스의 then 메서드와 마찬가지로 async await 함수 내부에서 반환하는 값이 프로미스라면 그 객체를 그대로 반환한다.
+
+다음과 같이 async await 함수 내부에서 예외가 발생하는 경우에는 거부됨 상태인 프로미스가 반환된다.
+
+```javascript
+async function getData() {
+    throw new Error('123');
+}
+getData().catch(error => console.log(error)); // 에러 발생: 123
+```
+
+###### await 키워드를 사용하는 방법
+
+await 키워드는 async await 함수 내부에서 사용된다. await 키워드 오른쪽에 프로미스를 입력하면 그 프로미스가 처리됨 상태가 될 때까지 기다린다. 따라서 await 키워드로 비동기 처리를 기다리면서 순차적으로 코드를 작성할 수 있다.
+
+다음은 await 키워드를 사용한 예다.
+
+```javascript
+function requestData(value) {
+    return new Promise(resolve =>
+		setTimeout(() => {
+        	console.log('requestData:', value);
+        	resolve(value);
+    	}, 100),
+	);
+}
+
+async function getData() {
+    const data1 = await requestData(10);
+    const data2 = await requestData(20);
+    console.log(data1, data2);
+    return [data1, data2];
+}
+getData();
+// requestData: 10
+// requestData: 20
+// 10 20
+```
+
+requestData 함수가 반환하는 프로미스가 처리됨 상태가 될 때까지 `console.log(data1, data2)` 코드는 실해되지 않는다. 따라서 `requestData: 10`과 `requestData: 20`이 먼저 출력되고, `10 20`이 출력되는 것이다.
+
+await 키워드는 오직 async await 함수 내에서만 사용될 수 있다. 다음과 같이 await 키워드를 일반 함수에서 사용하면 에러가 발생한다.
+
+```javascript
+function getData() {
+    const data = await requestData(10); // 에러 발생
+    console.log(data);
+}
+```
+
+###### async await는 프로미스보다 가독성이 좋다
+
+async await와 프로미스는 비동기 프로그래밍을 동기 프로그래밍 방식으로 작성할 수 있게 해준다. 다음 코드는 acync await와 프로미스를 비교하기 위해 같은 기능을 각각의 방식으로 구현한 것이다.
+
+```javascript
+function getDataPromise() {
+    asyncFunc1()
+    	.then(data => {
+        	console.log(data);
+        	return asyncFunc2();
+    	})
+    	.then(data = > {
+        	console.log(data);
+    	});
+}
+
+async function getDataAsync() {
+    const data1 = await asyncFunc1();
+    console.log(data1);
+    const data2 = await asyncFunc2();
+    console.log(data2);
+}
+```
+
+async await 함수는 then 메서드를 호출할 필요가 없기 때문에 더 간결하다.
+
+비동기 함수 간에 의존성이 높아질수록 async await와 프로미스의 가독성 차이는 더 선명하게 드러난다. 다음은 서로 의존성이 있는 여러 비동기 함수의 처리를 각각 async await와 프로미스로 작성한 코드다. asyncFunc1, asyncFunc2, asyncFunc3 세 함수는 각각의 반환값을 다른 함수의 인수로 넣으면서 의존성을 갖고 있다.
+
+```javascript
+function getDataPromise() {
+    return asyncFunc1()
+    	.then(data1 => Promise.all([data1, asyncFunc2(data1)]))
+    	.then(([data1, data2]) => {
+        	return asyncFunc3(data1, date2);
+    });
+}
+
+async function getDataAsync() {
+    const data1 = await asyncFunc1();
+    const data2 = await asyncFunc2(data1);
+    return asyncFunc3(data1, data2);
+}
+```
+
+두 반환값을 asyncFunc3 함수에 전달하기 위해 Promise.all을 사용했다. async await 함수는 복잡한 의존성이 존재함에도 코드가 직관적이다.
+
+##### 5-2. async await 활용하기
+
+###### 비동기 함수를 병렬로 실행하기
+
+async await 함수에서 여러 비동기 함수를 병렬로 처리하는 방법을 알아보자. 다음과 같이 여러 비동기 함수에 각각 await 키워드를 사용해서 호출하면 순차적으로 실행된다.
+
+```javascript
+async function getData() {
+    const data1 = await asyncFunc1();
+    const data2 = await asyncFunc2();
+    // ...
+}
+```
+
+앞의 코드에서 두 함수 사이에 의존성이 없다면 동시에 실행하는 게 더 좋다. 프로미스는 생성과 동시에 비동기 코드가 실행된다. 따라서 두 개의 프로미스를 먼저 생성하고 await 키워드를 나중에 사용하면 병렬로 실행되는 코드가 된다.
+
+```javascript
+async function getData() {
+    const p1 = asyncFunc1();
+    const p2 = asyncFUnc2();
+    const data1 = await p1;
+    const data2 = await p2;
+    // ...
+}
+```
+
+두 개의 프로미스가 생성되고 각자의 비동기 코드가 실행된다. 두 프로미스가 생성된 후 기다리기 때문에 두 개의 비동기 함수가 병렬로 처리된다.
+
+위의 코드는 Promise.all을 사용하면 다음과 같이 더 간단해진다.
+
+```javascript
+async function getData() {
+    const [data1, data2] = await Promise.all([asyncFunc1(), asyncFunc2()]);
+    // ...
+}
+```
+
+###### 예외 처리하기
+
+async await 함수에서 예외를 처리하는 방법을 알아보자. async await 함수 내부에서 발생하는 예외는 다음과 같이 try catch 문으로 처리하는 게 좋다.
+
+```javascript
+async function getData() {
+    try {
+        await doAsync();
+        return doSync();
+    } catch (error) {
+        console.log(error);
+    }
+}
+```
+
+비동기 함수와 동기 함수에서 발생하는 모든 예외가 catch 문에서 처리된다. 만약 getData 함수가 async await 함수가 아니었다면 doAsync 함수에서 발생하는 예외는 catch 문에서 처리되지 않는다. 이는 doAsync 함수의 처리가 끝나는 시점을 알 수 없기 때문이다.
+
+###### Thenable을 지원하는 async await
+
+Thenable은 프로미스처럼 동작하는 객체다. 프로미스가 ES6에 등장하기 이전부터 이미 여러 프로미스 라이브러리가 나왔다. 많은 개발자가 이러한 라이브러리를 사용해서 ES6 이전부터 프로미스를 사용해 왔다. async await는 ES6의 프로미스가 아니더라도 then 메서드를 가진 객체를 프로미스처럼 취급한다. 이렇게 ES6의 프로미스가 아니더라도 then 메서드를 가진 객체를 Thenable이라고 부른다.
+
+다음 코드의 ThenableExample 클래스로 생성한 객체는 Thenable이다. await 키워드와 함께 Thenable을 사용할 수 있다.
+
+```react
+class ThenableExample {
+    then(resolve, reject) {
+        setTimeout(() => resolve(123), 1000);
+    }
+}
+async function asyncFunc() {
+    const result = await new ThenableExample();
+    console.log(result); // 123
+}
+```
+
+ThenableExample 클래스는 then 메서드를 갖고 있으므로, ThenableExample 클래스로 생성된 객체는 Thenable이다. async await 함수는 Thenable도 프로미스처럼 처리한다.
+
+#### 6. 템플릿 리터럴로 동적인 문자열 생성하기
+
+ES6에 추가된 템플릿 리터럴은 변수를 이용해서 동적으로 문자열을 생성할 수 있는 문법이다. ES6 이전에 동적으로 문자열을 생성할 때는 다음과 같은 코드를 사용했다.
+
+```javascript
+var name = 'mike';
+var score = 80;
+var msg = 'name: ' + name + ', score/100:' + score / 100;
+```
+
+더하기 기호와 따옴표를 반복적으로 사용해서 문자열을 생성한다. 이 방식은 더하기 기호와 따옴표를 입려하느라 코드를 작성하는 시간이 오래 걸린다. 그리고 코드를 읽는 입장에서는 따옴표의 묶음을 잘 인지해야 하므로 가독성이 떨어진다.
+
+다음은 템플릿 리터럴로 이를 변경한 코드다.
+
+```javascript
+const msg = `name: ${name}, score/100: ${score / 100}`;
+```
+
+템플릿 리터럴은 백틱을 이용한다. 표현식을 사용할 때는 ${expression} 형식으로 입력한다.
+
+###### 여러 줄의 문자열 입력하기
+
+템플릿 리터럴을 사용하면 여러 줄의 문자열을 생성하기 쉽다. ES6 이전에는 여러 줄의 문자열을 생성하기 위해서 다음과 같이 작성했다.
+
+```javascript
+const msg = 'name: ' + name + '\n' +
+      'age: ' + age + '\n' +
+      'score: ' + score + '\n';
+```
+
+줄의 끝에 \n 기호를 입력하면 줄 바꿈이 된다. 이 방법 외에도 역슬래시를 이용한 방법들이 있지만 표현식이 들어가는 경우 복잡해지는 건 마찬가지다.
+
+다음과 같이 템플릿 리터럴을 이용하면 여러 줄의 문자열을 생성할 때 좀 더 자연스러운 방식으로 작성할 수 있다.
+
+```javascript
+const msg = `name : ${name}
+age: ${age}
+score: ${score}`;
+```
+
+ 줄의 끝에 \n 기호를 입력할 필요가 없다. 이전의 ES5 코드와 비교해보면 코드 입력 속도와 가독성 면에서 템플릿 리터럴이 우수하다는 것을 알 수 있다.
+
+> ###### 태그된 템플릿 리터럴
+>
+> 태그된 템플릿 리터럴은 템플릿 리터럴을 확장한 기능이다. 태그된 템플릿 리터럴은 함수로 정의된다. 사용할 때는 다음과 같이 함수명과 함께 템플릿을 붙여서 작성한다.
+>
+> ```javascript
+> function taggedFunc(strings, ...expressions) {
+>     return 123;
+> }
+> 
+> const v1 = 10;
+> const v2 = 20;
+> const result = taggedFunc`a ${v1} b ${v2}`;
+> console.log(result); // 123
+> ```
+>
+> taggedFunc는 태그된 템플릿 리터럴 함수다. taggedFunc 함수를 호출한다. 우리가 알고 있는 함수 호출과는 문법이 다르기 때문에 어색할 수 있다. 태그된 템플릿 리터럴 함수는 함수명과 함께 템플릿 리터럴을 붙여서 사용한다. 함수명 오른쪽의 템플릿 리터럴을 파싱한 결과가 strings, expressions 매개변수로 들어간다.
+>
+> 템플릿 리터럴의 표현식을 기준으로 문자열이 분할되어 strings 매개변수에 배열로 들어간다.
+>
+> 지금부터 여러 가지 예제를 통해 strings, expressions 매개변수의 값이 어떻게 만들어지는지 살펴보자.
+>
+> ```javascript
+> const v1 = 10;
+> const v2 = 20;
+> 
+> taggedFunc`a-${v1}-b-${v2}-c`;
+> // strings = [ 'a-', '-b-', '-c' ];
+> 
+> taggedFunc`a-${v1}-b-${v2}`;
+> // strings = [ 'a-', '-b-', '' ];
+> 
+> taggedFunc`${v1}-b-${v2}`;
+> // strings = [ '', '-b-', '' ];
+> 
+> // expressions = [10, 20];
+> 
+> function taggeedFunc(strings, ...expressions) {
+>     console.log(strings.length === expressions.length + 1); // true
+> }
+> ```
+>
+> 두 개의 표현식을 기준으로 세 개의 문자열로 분할된다. 템플릿 리터럴 오른쪽이 표현식으로 끝나면 빈 문자열이 들어간다. 마찬가지로 템플릿 리터럴 왼쪽이 표현식으로 시작하면 빈 문자열이 들어간다. 위 세 가지 예제 모두 expressions 매개변수의 값은 같다. strings 배열의 개수는 expressions 배열의 개수보다 항상 하나 더 많다.
+>
+> 태그된 템플릿 리터럴의 한 가지 사용 예는 일부 문자열을 강조하고 싶은 경우다. 다음은 expression 매개변수로 전달된 문자열을 HTML strong 태그로 감싸주는 함수다.
+>
+> ```javascript
+> function highlight(strings, ...expressions) {
+>     return strings.reduce(
+>     	(prevValue, str, i) =>
+>     		expressions.length === i
+>     			? `${prevValue}${str}`
+>     			: `${prevValue}${str}<strong>${expressions[i]}</strong>`,
+>     	'',
+>     );
+> }
+> 
+> const v1 = 10;
+> const v2 = 20;
+> const result = highlight`a ${v1} b ${v2}`;
+> console.log(result); // a <strong>10</strong> b <strong>20</strong>
+> ```
+>
+> 태그된 템플릿 리터럴 함수의 반환값이 꼭 문자열일 필요는 없다. styled-components 패키지에서는 태그된 템플릿 리터럴 함수가 리액트 컴포넌트를 반환한다.
+
+#### 7. 실행을 멈출 수 있는 제너레이터
+
+제너레이터는 함수의 실행을 중간에 멈추고 재개할 수 있는 독특한 기능이다. 실행을 멈출 때 값을 전달할 수 있기 때문에 반복문에서 제너레이터가 전달하는 값을 하나씩 꺼내서 사용할 수 있다. 이는 배열이 반복문에서 사용되는 방식과 같다. 다만, 제너레이터는 보통의 컬렉션과 달리 값을 미리 만들어 놓지 않는다. 값을 미리 만들어 놓으면 불필요하게 메모리를 사용하는 단점이 있다. 제너레이터를 사용하면 필요한 순간에 값을 계산해서 전달할 수 있기 때문에 메모리 측면에서 효율적이다.
+
+제너레이터는 값을 전달하는 용도 외에도 다른 함수와 협업 멀티태스킹을 할 수 있다. 제너레이터가 실행을 멈추고 재개할 수 있기 때문에 멀티태스킹이 가능하다. 협업이라는 단어가 붙는 이유는 제너레이터가 실행을 멈추는 시점을 자발적으로 선택하기 때문이다.
+
+제너레이터가 어떻게 실행을 멈추고 재개하는지 살펴보자.
+
+##### 7-1. 제너레이터 이해하기
+
+제너레이터는 별표와 함께 정의된 함수와 그 함수가 반환하는 제너레이터 객체로 구성된다. 다음은 간단한 제너레이터 함수의 코드다.
+
+```javascript
+function* f1() {
+    yield 10;
+    yield 20;
+    return 'finished';
+}
+const gen = f1();
+```
+
+별표와 함께 정의된 함수는 제너레이터 함수다. yield 키워드를 사용하면 함수의 실해을 멈출 수 있다. 제너레이터 함수를 실행하면 제너레이터 객체가 반환된다.
+
+제너레이터 객체는 next, return, throw 메서를 갖고 있다. 우리는 주로 next 메서드를 사용하게 된다. 다음은 next 메서드를 사용하는 코드다.
+
+
+
