@@ -189,7 +189,7 @@ print(inName[i]) # i is not defined
 
 ---
 
-##### input()
+#### input()
 
 사용자로부터 데이터를 입력받고자 할 때 사용하는 함수로 모든 입력데이터는 무조건 문자형 자료로 저장된다.
 
@@ -213,6 +213,259 @@ elif inData < 0 :
     print("0보다 작은 값입니다.")
 else :
     print("0이 입력되었습니다.")
+```
+
+---
+
+#### numpy 난수 발생
+
+* random 모듈을 이용한 난수 생성
+
+* random.randint(시작값, 종료값) 
+  * 시작값~종료값 범위에 있는 정수를 임의로 생성
+  * range와 같이 종료값은 범위에 포함되지 않는다. 
+
+```python
+import numpy as np
+
+# 10~20 사이의 정수를 임의로 생성 (10, 11, 12, ..., 19)
+np.random.randint(10, 20)
+
+# 0부터 50까지 무작위 정수를 10개 추출한 리스트 출력
+rd_list = []
+for i in range(10):
+    rd_list.append(np.random.randint(0, 51))
+print(rd_list)
+
+# 0부터 50까지 무작위 정수를 10개 추출한 리스트 출력하는 두 가지 방법
+print(np.random.randint(51, size=10))
+print(np.random.randint(0, 51, 10)
+```
+
+##### 한 줄 쓰기
+
+```python
+# 한 줄 쓰기
+# 0부터 50까지 무작위 정수를 10개 추출한 리스트 출력
+rd_list = [np.random.randint(0, 51) for i in range(10)]
+print(rd_list)
+
+# words 데이터에서 글자수가 4개 이상인 데이터를 찾아 new_words에 리스트로 저장
+words = ["멀티캠퍼스" ,"티스토리", "블로그", "파이썬", "for", "프로그래밍", "반복"]
+new_words = []
+
+for word in words:
+    if len(word) > 3:
+        new_words.append(word)
+        
+print(new_words)
+
+# 한 줄 쓰기
+# words 데이터에서 글자수가 4개 이상인 데이터를 찾아 new_words에 리스트로 저장
+new_words = [word for word in words if len(word) > 3 ]
+print(new_words)
+```
+
+```python
+# words가 가지고 있는 단어 중 길이가 4 이상인 데이터만 new_words에 리스트로 추가
+words = [ [ "이중 for문", "파이썬", "프로그래밍", "스터디" ], 
+[ "Python", "NLP", "ML", "DL" ], [ "leetCode", "BaekJoon", "HackerRank" ], 
+[ "멀티캠퍼스", "COMPAS", "DACON", "Kaggle" ] ]
+
+new_words  = []
+for each_word_lst in words:
+    for word in each_word_lst:
+        if len(word) > 3:
+            new_words.append(word)
+            
+print(new_words)
+```
+
+```python
+# 한 줄 쓰기
+# 총 5개의 리스트, 각 리스트의 크기는 10~20개이며, 각 리스트의 요소는 0~50 사이의 값으로 구성
+rd_lst=[list(np.random.randint(0,51,size=np.random.randint(10,21))) for i in range(5)]
+print(rd_lst)
+```
+
+---
+
+#### for문과 if문을 이용한 최대, 최소값 계산
+
+```python
+# 배열 내 최대값 구하기
+data=[34, 23, 20, 43, 1, 5, 2, 14, 18, 24, 40, 18, 38, 4, 3, 22, 43, 6, 36, 13]
+mxdata=data[0]
+for dt in data:
+    if dt > mxdata:
+        mxdata=dt
+print(mxdata)
+
+# 배열 내 최소값 구하기
+data=[34, 23, 20, 43, 1, 5, 2, 14, 18, 24, 40, 18, 38, 4, 3, 22, 43, 6, 36, 13]
+mndata=data[0]
+for dt in data:
+    if dt < mndata:
+        mndata=dt
+print(mndata)
+
+# 배열 전체 합계 구하기
+data=[34, 23, 20, 43, 1, 5, 2, 14, 18, 24, 40, 18, 38, 4, 3, 22, 43, 6, 36, 13]
+sumdata = 0
+for dt in data:
+    sumdata += dt
+print(sumdata)
+```
+
+```python
+lst = 	[[48, 1, 49, 20, 6, 40, 8, 36, 2, 16, 16, 39, 15],
+		[39, 46, 39, 1, 4, 16, 49, 37, 45, 6, 26, 14, 28],
+        [0, 21, 30, 24, 49, 18, 20, 49, 4, 7, 5, 26, 37],
+		[34, 2, 28, 47, 10, 1, 22, 26, 30, 31, 26, 42, 16, 15, 45, 9, 48],
+		[13, 20, 9, 37, 28, 16, 17, 2, 7, 22, 21, 39, 14, 27]]
+
+# 최대값 구하기
+mxdata = lst[0][0]
+for dat in lst:
+    for i in dat:
+        if i >  mxdata :
+            mxdata = i
+
+# 최소값 구하기
+mndata = lst[0][0]
+for dat in lst:
+    for i in dat:
+        if i <  mndata :
+            mndata = i
+
+# 합계 구하기
+sumdata = 0
+for dat in lst:
+    for i in dat:
+        sumdata += i
+        
+print(f'최대값:{mxdata}, 최소값:{mndata}, 합계:{sumdata}')
+```
+
+##### 각 그룹별 계산
+
++ 그룹단위 최대, 최소, 합계
++ 전체 최대, 최소, 합계
+
+```python
+rd_lst=[list(np.random.randint(0,51,size=np.random.randint(10,21))) for i in range(5)]
+print(rd_lst)
+```
+
+```python
+G_lst=[]
+Tot_lst=[0, rd_lst[0][0], rd_lst[0][0]]
+
+for i in range(len(rd_lst)):
+    group_lst = [0, rd_lst[i][0], rd_lst[i][0]]
+    for data in rd_lst[i]:
+        group_lst[0] += data      
+        if data > group_lst[1]:
+            group_lst[1] = data       
+        if data < group_lst[2]:
+            group_lst[2] = data    
+    G_lst.append(group_lst)
+    
+    Tot_lst[0] += group_lst[0]
+    if group_lst[1] > Tot_lst[1]:
+        Tot_lst[1] = group_lst[1]ㄴ
+    if group_lst[2]< Tot_lst[2]:
+        Tot_lst[2] = group_lst[2]
+   
+print('그룹별\n',G_lst,'\n')
+print(f'전체 합계:{Tot_lst[0]}, 전체 최대:{Tot_lst[1]}, 전체 최소:{Tot_lst[2]}')
+```
+
+---
+
+#### 파일 관리
+
++ CSV 형식의 파일 읽어오는 방법
+  + pandas 모듈을 이용하는 방법
+  + csv 모듈을 이용하는 방법
+
+```python
+# 공공 데이터 포털에서 가져온 데이터 내용 화면에 출력
+import csv
+
+f = open('./data/seoul.csv', 'r', encoding='cp949')
+data = csv.reader(f, delimiter=",")
+
+header = next(data) #첫번째 행(제목행)을 header로 빼고, data에서는 제외
+
+for row in data:
+    print(row)
+
+f.close()
+```
+
+```python
+# 가장 더웠던 날에 대한 정보 찾기
+
+import csv
+
+f = open('./data/seoul.csv', 'r', encoding='cp949')
+data = csv.reader(f, delimiter=",")
+
+header = next(data)
+print(header)
+
+maxtem = ["",0, 0, 0]
+for row in data:
+    if row[4]!='' :
+        if float(row[4]) > maxtem[1]:
+            maxtem[0] = row[2]
+            maxtem[1] = float(row[4])
+            maxtem[2] = float(row[-3])
+            maxtem[3] = float(row[-1])
+
+print(maxtem)
+f.close()
+```
+
+---
+
+#### pandas 모듈을 이용한 csv 파일 관리
+
+```python
+import pandas as pd
+
+df=pd.read_csv('./data/seoul.csv', encoding='cp949')
+
+df['최고기온(℃)'].max()
+df[df['최고기온(℃)'] == df['최고기온(℃)'].max()]
+
+df.info()
+
+df.columns
+
+df[['지점명', '일시', '평균기온(℃)', '최고기온(℃)', '최저기온(℃)']]
+```
+
+---
+
+```python
+# 자신의 생일과 일치하는 날짜에 대한 날씨[평균, 최고, 최저기온] 출력
+
+import csv
+
+f = open('./data/seoul.csv', 'r', encoding='cp949')
+data = csv.reader(f, delimiter=",")
+
+header = next(data)
+
+birth = []
+for row in data:
+    if (row[2]) != '' and int(row[2][:4]) >= 1991 and row[2][5:10] == '02-04':
+        birth.append([row[2],float(row[3]),float(row[4]),float(row[6])])
+f.close()
+
+print(birth)
 ```
 
 
