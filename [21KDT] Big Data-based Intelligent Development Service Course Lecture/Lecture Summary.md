@@ -1018,5 +1018,262 @@ df1[(df1['자치구명'].str.contains(gu)) & (df1['건물주용도'].str.contain
 
 #### pandas 모듈 이해 및 활용
 
+```python
+import pandas as pd
+from numpy import random
+import matplotlib.pyplot as plt
 
+df1 = pd.Series(['AAA', 'BBB', 'CCC', 'DDD'], name="Name")
+print(df1)
+print(type(df1))
+
+df2 = pd.Series([33, 28, 45, 41], name="Age")
+print(df2)
+print(type(df2))
+
+print(pd.DataFrame(df1))
+print(pd.DataFrame(df2))
+```
+
+concat: 두 개 이상의 데이터 프레임 또는 시리즈 구조의 데이터를 병합할 때 사용
+
+ + 병합방법
+    + 행 병합(행 추가) [기본] => axis=0
+    + 열 병합(열 추가) => axis=1
+
+```python
+df0 = pd.concat([df1, df2], axis=1)
+print(type(df0))
+df0
+```
+
+```python
+df2=pd.DataFrame(df2)
+df0 = pd.concat([df1, df2], axis=1)
+print(type(df0))
+df0
+```
+
+#### pandas.DataFrame 생성
+
+```python
+# pandas.DataFrame 생성: 딕셔너리 구조 이용
+df1 = pd.DataFrame({"Name":['AAA','BBB','CCC','DDD'],
+                   "Age":[33, 28, 45, 41],
+                   "Gender":['male', 'male', 'female', 'male']})
+df1
+```
+
+```python
+# pandas.DataFrame 생성: 리스트 구조 이용
+df1 = pd.DataFrame((["AAA", 33, 'male'],
+                   ["BBB", 28, 'male'],
+                   ["CCC", 45, 'female'],
+                   ["DDD", 41, 'male']), columns=["Name", "Age", "Gender"])
+
+df1
+```
+
+```python
+# pandas.DataFrame 생성: 딕셔너리 & 리스트 구조 동시 이용
+df1 = pd.DataFrame([{'Name':'AAA', 'Age':33, 'Gender':'male'},
+                   {'Name':'BBB', 'Age':28, 'Gender':'male'},
+                   {'Name':'CCC', 'Age':45, 'Gender':'female'},
+                   {'Name':'DDD', 'Age':41, 'Gender':'male'}])
+df1
+```
+
+---
+
+### 성적표.csv 파일을 이용한 데이터 추가/수정/삭제 등 관리
+
+```python
+df1 = pd.read_csv('./data/성적표_null.csv', encoding='cp949')
+df1
+```
+
+```python
+df1.isnull().sum()
+```
+
+```python
+# NaN 값 처리: 모든 데이터 NaN인 데이터 행 삭제
+# dropna() 옵션 : default(생략) => how='any': Nan인 모든 행 삭제
+# dropna() 옵션 : default(how='all'): 행 전체가 NaN인 모든 행 삭제
+df1.dropna()
+df1.dropna(how="all")
+
+# dropna() 옵션 : default(how='all'): 행 전체가 NaN인 열 삭제
+df1.dropna(how="all", axis=1)
+
+# dropna() 옵션 : thresh=결측치 개수 => 결측치 개수가 임계치 이상인 데이터 모두 삭제
+df1 = df1.dropna(thresh=3) # NaN이 세 개 이상인 데이터 행 삭제
+```
+
+---
+
+#### pandas.Series 구조
+
+```python
+# 이론, 실기 점수를 60~100 사이의 값으로 무작위 입력
+df1['이론']=random.randint(60, 101, size=len(df1))
+df1['실기']=random.randint(60, 101, size=len(df1))
+
+df1
+```
+
+```python
+# 성별에 따라 1, 2가 들어갈 리스트 변수 생성
+gender_code = []
+for xy in df1['남/여']:
+    if xy == '남자':
+        gender_code.append(1)
+    elif xy == '여자':
+        gender_code.append(2)
+
+df1['성별코드']=gender_code
+
+df1
+
+# 성별에 따라 1, 2가 들어갈 리스트 변수 생성 [한줄쓰기]
+df1['성별코드']=[1 if xy == "남자" else 2 for xy in df1['남/여']]
+```
+
+```python
+# 열 위치 변경
+df1 = df1[['순번', '이름', '학과', '남/여', '성별코드', '학년', '이론', '실기']]
+```
+
+```python
+# 이론, 실기 점수 합계와 평균 추가
+df1['합계']=df1['이론']+df1['실기']
+df1['평균']=df1['합계']/2
+```
+
+---
+
+#### pandas.DataFrame 저장
+- csv.DataFrame.to_csv('경로 및 파일명.csv', index=False)
+  - 구분자 기본은 쉼표(,)
+  - index는 저장안함
+- txt: DataFrame.to_csv('경로 및 파일명.txt', sep='\t', index=False)
+  - 구분자(sep)를 탭으로 지정
+- xls : DataFrame.to_excel('경로 및 파일명.xls', index=False)
+  - xls: !pip install xlwt
+  - xlsx : !pip install openpyxl
+- html : DataFrame.to_html('경로 및 파일명.html', index=False, header=False)
+
+```python
+df1.to_csv('./data/성적1.csv', encoding="cp949")
+df1.to_csv('./data/성적1.txt', sep='\t')
+df1.to_excel('./data/성적1.xlsx', header=False)
+df1.to_html('./data/성적1.html', index=False)
+```
+
+---
+
+#### pandas.DataFrame 행/열 값 출력하기
+
++ 단일 행 출력
+  + DataFrame.loc[index, '열이름']
++ 시작~ 종료 값 연속 다중 행 출력
+  + DataFrame.loc[index시작값:index종료값] => 시작~종료값 다중 행 출력
++ 시작~종료값 불연속 행 다중 출력
+  + DataFrame.loc[[index1, index2],['열이름1','열이름2']]
+
+```python
+# 단일 행 출력
+df1.loc[1]
+df1.loc[0,['이름']]
+df1.loc[3, ['이름','학과','학년']]
+```
+
+```python
+# 연속 다중 행 출력
+df1.loc[1:6]
+df1.loc[2:4, ['이름']]
+df1.loc[9:16, ['이름','학과','학년']]
+```
+
+```python
+# 불연속 행 다중 출력
+df1.loc[[4, 8, 6, 1]]
+df1.loc[[0, 1, 0, 7, 3]] # 중복도 가능
+df1.loc[[0, 2, 4, 8],['이름','남/여']]
+```
+
++ 행렬 위치에 따른 데이터 값
+
+  + DataFrame.iloc[행위치, 열위치]
+
+  + DataFrame.iloc[행시작위치:행종료위치, 열시작위치:열종료위치]
+
+```python
+df1.iloc[0,0]
+df1.iloc[5:13, 1:6]
+df1.iloc[[1,5,4,3],[1,2,3,4,5]]
+
+df1.iloc[[1,3],1:6]
+df1.iloc[1:3,[4,3,1]]
+```
+
+---
+
+#### 데이터 정렬
+
++ DataFrame.sort_values(by=['열 이름'], ascending=True)
++ DataFrame.sort_index()
+
+```python
+# DataFrame 값을 기준으로 정렬
+df1 = df1.sort_values(by=['학년'])
+display(df1.head())
+df1.sort_values(by=['평균'], ascending=False, inplace=True)
+display(df1.head())
+```
+
+```python
+# 복수의 정렬 조건
+df1 =df1.sort_values(by=['학년','평균'], ascending=[True, False])
+
+# 재정렬 후 차이 비교
+df1.loc[0:9] # index 값이 0인 행부터 9인 행까지 출력
+df1.iloc[0:9] # 0번째 행부터 9번째 행까지 출력
+```
+
+```python
+# 인덱스 기준 정렬
+df1.sort_index()
+
+# 인덱스 재설정
+df1.reset_index(drop=True)
+```
+
+####  데이터 행/열 삭제
+
++ DataFrame.drop(index)
+
+```python
+# index 값이 0인 데이터 행 삭제
+df1.drop(0)
+df1.drop(0, axis=0)
+df1.drop(0, 0)
+df1.drop(index=0, axis=0)
+
+# index 값이 29, 33, 16인 데이터 행 삭제
+df1.drop([29,33,16])
+df1.drop(index=[29,33,16], axis=0)
+
+# 특정 조건에 따른 데이터 행 삭제
+drop_index = df1[df1['평균'] < 90].index
+df1.drop(drop_index)
+
+# 열 삭제
+df1.drop(columns=['순번','학년'])
+df1.drop(['평균'], axis=1)
+df1.drop(['순번',['성별코드']], axis=1)
+
+# 즉시 삭제
+del df1['합계']
+```
 
