@@ -1277,3 +1277,124 @@ df1.drop(['순번',['성별코드']], axis=1)
 del df1['합계']
 ```
 
+---
+
+```python
+# 구분자가 쉼표가 아닌 다른 구분자(탭:\t)를 사용한 데이터 읽어오기
+# 제목행 선택
+import pandas as pd
+
+df1 = pd.read_csv('./data/서울시 인구현황_구.txt', sep='\t')
+```
+
+```python
+# 특정 열에 대한 데이터만을 가져오는 세 가지 방법
+df1[['기간', '자치구', '합계', '합계.1', '합계.2', '한국인', '한국인.1', '한국인.2',
+       '등록외국인', '등록외국인.1', '등록외국인.2', '65세이상고령자']]
+
+df1.loc[:,['기간', '자치구', '합계', '합계.1', '합계.2', '한국인', '한국인.1', '한국인.2',
+       '등록외국인', '등록외국인.1', '등록외국인.2', '65세이상고령자']]
+
+df1.iloc[:,[0,1,3,4,5,6,7,8,9,10,11,-1]]
+```
+
+```python
+df1 = df1.iloc[1:,[0,1,3,4,5,6,7,8,9,10,11,-1]]
+```
+
+```python
+df1.drop(0, inplace=True) # axis=0 생략
+df1.head()
+```
+
+axis = 0은 dataframe 행 단위를 수정할 때 필요한 파라미터 값이다. axis = 1은 dataframe 열 단위를 수정할 때 필요한 파라미터 값이다. drop( ) 함수에 index, column이라는 파라미터를 사용하지 않는다면 axis=0 또는 axis=1 파라미터값을 넣어줘야 한다.
+
+#####  열 이름 변경
+
+- 전체 열 이름 일부 변경
+  - df.rename(columns={'합계':'총인구', '합계.1':'총인구(남), ...}) 
+- 다수의 열 이름 변경
+  - df.rename(columns={df1.columns[2]:'총인구', df1.columns[2]:'총인구(남), ...})
+
+```python
+# 열 이름 변경
+col_name=['년도', '자치구','총인구','총인구(남)', '총인구(여)', '내국인', '내국인(남)', '내국인(여)',
+          '외국인', '외국인(남)','외국인(여)', '65세이상']
+
+for i in range(len(col_name)):
+    df1.rename(columns={df1.columns[i]:col_name[i]}, inplace=True)
+
+df1.head(3)
+```
+
+```python
+df1.info()
+```
+
+##### 연도별 총인구 값을 나타내는 그래프 작성
+
+```python
+df2=df1.iloc[:, 0:5]
+df2.head()
+df2.info()
+```
+
+```python
+# pandas에서 데이터형을 원하는 데이터형으로 변겅: astype() 함수
+
+df2['총인구'] = df2['총인구'].str.replace(',','')
+df2['총인구(남)'] = df2['총인구(남)'].str.replace(',','')
+df2['총인구(여)'] = df2['총인구(여)'].str.replace(',','')
+
+df2.dtypes
+```
+
+```python
+df2 = df2.astype({'년도':int,'총인구':int,'총인구(남)':int,'총인구(여)':int})
+
+df2.dtypes
+```
+
+```python
+df2.head()
+```
+
+```python
+import matplotlib.pyplot as plt
+
+gu = input('조회할 구 이름 입력:')
+
+df3 = df2[df2['자치구']==gu]
+```
+
+```python
+plt.plot(df3['년도'],df3['총인구'])
+plt.show()
+```
+
+```python
+plt.plot(df3['년도'],df3['총인구(남)'])
+plt.plot(df3['년도'],df3['총인구(여)'])
+plt.show()
+```
+
+```python
+import matplotlib.font_manager as fm
+font_name=fm.FontProperties(fname="C:/Windows/Fonts/malgun.ttf").get_name()
+plt.rc('font', family=font_name)
+
+df3.plot(kind='hexbin', x='총인구', y='년도', gridsize=20)  # 산점도 그래프
+plt.show()
+```
+
+```python
+df3.plot(kind='bar', x='년도', y=['총인구(남)', '총인구(여)'])  
+plt.show()
+```
+
+```python
+df1[df1['내국인'] != '…']
+```
+
+
+
