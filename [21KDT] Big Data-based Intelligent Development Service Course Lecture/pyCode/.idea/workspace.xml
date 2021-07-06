@@ -2,8 +2,42 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9a7c446d-09b0-449c-b3c3-3d4cfa8b5858" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/0705/서울시 인구현황 분석_3.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Lecture Summary.md" beforeDir="false" afterPath="$PROJECT_DIR$/../Lecture Summary.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/0705/서울 외국인 현황 분석.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/0706/MY_module.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/0706/Matplotlib 시각화.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/0706/Modal_Class.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/0706/subway/CARD_SUBWAY_MONTH_201901.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/0706/subway/CARD_SUBWAY_MONTH_201902.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/0706/subway/CARD_SUBWAY_MONTH_201903.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/0706/subway/CARD_SUBWAY_MONTH_201904.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/0706/subway/CARD_SUBWAY_MONTH_201905.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/0706/subway/CARD_SUBWAY_MONTH_201906.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/0706/subway/CARD_SUBWAY_MONTH_201907.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/0706/subway/CARD_SUBWAY_MONTH_201908.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/0706/subway/CARD_SUBWAY_MONTH_201909.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/0706/subway/CARD_SUBWAY_MONTH_201910.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/0706/subway/CARD_SUBWAY_MONTH_201911.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/0706/subway/CARD_SUBWAY_MONTH_201912.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/0706/subway/CARD_SUBWAY_MONTH_202001.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/0706/subway/CARD_SUBWAY_MONTH_202002.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/0706/subway/CARD_SUBWAY_MONTH_202003.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/0706/subway/CARD_SUBWAY_MONTH_202004.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/0706/subway/CARD_SUBWAY_MONTH_202005.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/0706/subway/CARD_SUBWAY_MONTH_202006.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/0706/subway/CARD_SUBWAY_MONTH_202007.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/0706/subway/CARD_SUBWAY_MONTH_202008.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/0706/subway/CARD_SUBWAY_MONTH_202009.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/0706/subway/CARD_SUBWAY_MONTH_202010.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/0706/subway/CARD_SUBWAY_MONTH_202011.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/0706/subway/CARD_SUBWAY_MONTH_202012.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/0706/subway/CARD_SUBWAY_MONTH_202101.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/0706/subway/CARD_SUBWAY_MONTH_202102.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/0706/subway/CARD_SUBWAY_MONTH_202103.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/0706/subway/CARD_SUBWAY_MONTH_202104.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/0706/subway/CARD_SUBWAY_MONTH_202105.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/0706/모듈_클래스_사용자함수.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/0706/지하철 탑승현황.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,24 +55,28 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="ProjectId" id="1usk8WzDvQkgomSCOLRYdKx73lm" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/0705" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/0706" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\user\Documents\GitHub\TIL\[21KDT] Big Data-based Intelligent Development Service Course Lecture\pyCode\0706" />
       <recent name="C:\Users\user\Documents\GitHub\TIL\[21KDT] Big Data-based Intelligent Development Service Course Lecture\pyCode\0705" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.서울시 인구현황 분석_3">
-    <configuration name="서울시 인구현황 분석_2" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python.지하철 탑승현황">
+    <configuration name="지하철 탑승현황" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="pyCode" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -46,32 +84,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/0705" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/0706" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/0705/서울시 인구현황 분석_2.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="서울시 인구현황 분석_3" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="pyCode" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/0705" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/0705/서울시 인구현황 분석_3.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/0706/지하철 탑승현황.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -101,10 +118,97 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="지하철" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="pyCode" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/0706" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/0706/지하철.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="MY_module" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="pyCode" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/0706" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/0706/MY_module.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Modal_Class" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="pyCode" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/0706" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/0706/Modal_Class.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="모듈_클래스_사용자함수" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="pyCode" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/0706" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/0706/모듈_클래스_사용자함수.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.서울시 인구현황 분석_3" />
-        <item itemvalue="Python.서울시 인구현황 분석_2" />
+        <item itemvalue="Python.지하철 탑승현황" />
+        <item itemvalue="Python.지하철" />
+        <item itemvalue="Python.MY_module" />
+        <item itemvalue="Python.Modal_Class" />
+        <item itemvalue="Python.모듈_클래스_사용자함수" />
       </list>
     </recent_temporary>
   </component>
@@ -130,5 +234,18 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$USER_HOME$/Desktop/서울 외국인 현화 분석_시각화1.py</url>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
