@@ -2,42 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9a7c446d-09b0-449c-b3c3-3d4cfa8b5858" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/0705/서울 외국인 현황 분석.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/0706/MY_module.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/0706/Matplotlib 시각화.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/0706/Modal_Class.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/0706/subway/CARD_SUBWAY_MONTH_201901.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/0706/subway/CARD_SUBWAY_MONTH_201902.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/0706/subway/CARD_SUBWAY_MONTH_201903.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/0706/subway/CARD_SUBWAY_MONTH_201904.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/0706/subway/CARD_SUBWAY_MONTH_201905.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/0706/subway/CARD_SUBWAY_MONTH_201906.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/0706/subway/CARD_SUBWAY_MONTH_201907.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/0706/subway/CARD_SUBWAY_MONTH_201908.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/0706/subway/CARD_SUBWAY_MONTH_201909.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/0706/subway/CARD_SUBWAY_MONTH_201910.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/0706/subway/CARD_SUBWAY_MONTH_201911.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/0706/subway/CARD_SUBWAY_MONTH_201912.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/0706/subway/CARD_SUBWAY_MONTH_202001.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/0706/subway/CARD_SUBWAY_MONTH_202002.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/0706/subway/CARD_SUBWAY_MONTH_202003.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/0706/subway/CARD_SUBWAY_MONTH_202004.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/0706/subway/CARD_SUBWAY_MONTH_202005.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/0706/subway/CARD_SUBWAY_MONTH_202006.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/0706/subway/CARD_SUBWAY_MONTH_202007.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/0706/subway/CARD_SUBWAY_MONTH_202008.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/0706/subway/CARD_SUBWAY_MONTH_202009.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/0706/subway/CARD_SUBWAY_MONTH_202010.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/0706/subway/CARD_SUBWAY_MONTH_202011.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/0706/subway/CARD_SUBWAY_MONTH_202012.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/0706/subway/CARD_SUBWAY_MONTH_202101.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/0706/subway/CARD_SUBWAY_MONTH_202102.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/0706/subway/CARD_SUBWAY_MONTH_202103.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/0706/subway/CARD_SUBWAY_MONTH_202104.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/0706/subway/CARD_SUBWAY_MONTH_202105.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/0706/모듈_클래스_사용자함수.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/0706/지하철 탑승현황.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/0706/subway/CARD_SUBWAY_MONTH_202005.csv" beforeDir="false" afterPath="$PROJECT_DIR$/0706/subway/CARD_SUBWAY_MONTH_202005.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/0706/subway/CARD_SUBWAY_MONTH_202006.csv" beforeDir="false" afterPath="$PROJECT_DIR$/0706/subway/CARD_SUBWAY_MONTH_202006.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/0706/subway/CARD_SUBWAY_MONTH_202007.csv" beforeDir="false" afterPath="$PROJECT_DIR$/0706/subway/CARD_SUBWAY_MONTH_202007.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/0706/subway/CARD_SUBWAY_MONTH_202008.csv" beforeDir="false" afterPath="$PROJECT_DIR$/0706/subway/CARD_SUBWAY_MONTH_202008.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/0706/subway/CARD_SUBWAY_MONTH_202010.csv" beforeDir="false" afterPath="$PROJECT_DIR$/0706/subway/CARD_SUBWAY_MONTH_202010.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/0706/subway/CARD_SUBWAY_MONTH_202011.csv" beforeDir="false" afterPath="$PROJECT_DIR$/0706/subway/CARD_SUBWAY_MONTH_202011.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/0706/subway/CARD_SUBWAY_MONTH_202012.csv" beforeDir="false" afterPath="$PROJECT_DIR$/0706/subway/CARD_SUBWAY_MONTH_202012.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/0706/subway/CARD_SUBWAY_MONTH_202101.csv" beforeDir="false" afterPath="$PROJECT_DIR$/0706/subway/CARD_SUBWAY_MONTH_202101.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/0706/subway/CARD_SUBWAY_MONTH_202102.csv" beforeDir="false" afterPath="$PROJECT_DIR$/0706/subway/CARD_SUBWAY_MONTH_202102.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/0706/subway/CARD_SUBWAY_MONTH_202103.csv" beforeDir="false" afterPath="$PROJECT_DIR$/0706/subway/CARD_SUBWAY_MONTH_202103.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/0706/subway/CARD_SUBWAY_MONTH_202104.csv" beforeDir="false" afterPath="$PROJECT_DIR$/0706/subway/CARD_SUBWAY_MONTH_202104.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/0706/subway/CARD_SUBWAY_MONTH_202105.csv" beforeDir="false" afterPath="$PROJECT_DIR$/0706/subway/CARD_SUBWAY_MONTH_202105.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/0706/지하철 탑승현황.py" beforeDir="false" afterPath="$PROJECT_DIR$/0706/지하철 탑승현황.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -237,15 +215,5 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$USER_HOME$/Desktop/서울 외국인 현화 분석_시각화1.py</url>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
