@@ -25,6 +25,60 @@ namespace Intro_Ex1
 >
 > `CLR (Common Language Runtime)` : 마이크로소프트에서 개발한 CLI를 따르는 가장 대표적인 VM
 
+#### C# 코딩 가이드 라인
+
+##### Bracing 스타일
+
+```c#
+//  좋은 표현
+if (condition)
+{
+    Run();
+}
+else
+{
+    OtherRun();
+}
+
+// 나쁜 표현 [시작 Brace는 별도의 라인에 있지 않음]
+if (condition) { 
+    Run();
+}
+// 나쁜 표현 [Brace가 생략되었음]
+else OtherRun();  
+
+
+// 나쁜 표현 [Brace가 생략되었음]
+for (int i = 0; i < 100; ++i)
+    Run();
+```
+
+##### Bracing 스타일의 예외
+
+```c#
+//  OK 표현
+Public string Name
+{
+     get { return this.name; }
+     set { this.name = value; }
+}
+
+// switch문 들여쓰기 [case문에 하나의 문장만 있을 경우 Brace를 생략할 수 있다]
+switch (category)
+{
+    case 0:
+        Run1();
+        break;
+
+    case 2:
+        {
+            int n = 1;
+            Run2(n);
+        }
+        break;
+}
+```
+
 
 
 #### C# 데이터 타입
